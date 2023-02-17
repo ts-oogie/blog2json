@@ -1,25 +1,40 @@
-import logo from './logo.svg';
+import Header from './components/Header'
+import Menu from './components/Menu'
+import {useState} from 'react'
+
+
 import './App.css';
 
 function App() {
+  const [items, setItems] = useState([ //items is our current State, setItems is the func we use to update the state, useState is where we set the initial state
+    {
+        id: 1,
+        text: "Blog"
+    },
+    {
+        id: 2,
+        text: "Design"
+    },
+    {
+        id:3,
+        text: "Code"
+    }
+]
+) 
+
+  const name = 'BLOG2JSON' 
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Header title={name} heading='MENS'/>
+      <Menu items={items}/>
     </div>
+    // we can only return one wrapper element
   );
+}
+
+Header.defaultProps = {
+  title: "I - Goose"
 }
 
 export default App;
