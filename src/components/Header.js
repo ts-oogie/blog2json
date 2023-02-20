@@ -8,10 +8,10 @@
   }
 
   return (
-    <header>
-      <h1 style={{color: "white", backgroundColor: "black"}}>{props.title}</h1> 
+    <header className="navBar">
+      <h1 className="navTitle" style={{color: "white"}}>{props.title}</h1> 
       <h2 style={headingStyle}>{props.heading}</h2>
-      <Button color="black" text="add" onClick={btnClick} />
+       
     </header>
   )
 }

@@ -1,7 +1,7 @@
 import Header from './components/Header'
 import Menu from './components/Menu'
-import {useState} from 'react'
-
+//import {BrowserRouter as Router, Route} from 
+import {useState} from 'react' 
 
 import './App.css';
 
@@ -20,7 +20,9 @@ function App() {
         text: "Code"
     }
 ]
-) 
+)  
+
+ 
 
   const name = 'BLOG2JSON' 
 
