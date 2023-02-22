@@ -30,7 +30,7 @@ function App() {
 
   return (
     <div className="App">
-      <Header title={name}  />
+      <Header title={name} />
       <TitleImageText />
       <PrintItems items={items}/>
       <BlogInput setItems={setItems} />
