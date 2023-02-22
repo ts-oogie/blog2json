@@ -1,14 +1,14 @@
 import Item from './Item'
 
-const Menu = ({items}) => {
-    
+const PrintItems = ({items}) => {
+    console.log(items)
     return(
         <>
         {items.map((item) => (
-            <Item key={item.key} text={item.text}/>
+            <Item id={item.id} text={item.text}  />
         ))}
         </>
     )
 }
 
-export default Menu
+export default PrintItems

@@ -1,5 +1,4 @@
- import PropTypes from 'prop-types'
- import Button from './Button'
+ import PropTypes from 'prop-types' 
  
  const Header = (props) => { //Or const Header = ({title})
     //or  {title} instead of {props.title} on line 4
@@ -9,10 +8,8 @@
 
   return (
     <header className="navBar">
-      <h1 className="navTitle" style={{color: "white"}}>{props.title}</h1> 
-      <h2 style={headingStyle}>{props.heading}</h2>
-       
-    </header>
+      <h1 className="navTitle" style={{color: "white"}}>{props.title}</h1>  
+    </header> 
   )
 }
 
@@ -28,3 +25,7 @@ const headingStyle = {
 }
 
 export default Header
+
+
+
+ 
