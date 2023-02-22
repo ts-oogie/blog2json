@@ -18,7 +18,5 @@ return (
     </header> 
 )
 }
-
-//You can set property types 
-
+ 
 export default TitleImageText

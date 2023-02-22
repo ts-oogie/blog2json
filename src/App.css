@@ -30,8 +30,7 @@ body {
 }
 
 .titleImageText {
-  height : 60px;
-  background-color: grey; 
+  height : 60px; 
   margin-top : -20px;
   display: flex; 
   flex-direction: row;
@@ -68,6 +67,19 @@ body {
     height : 65px;
     font-size : 1.75rem;
   } 
+  .titleImageText {
+    height : 50px;
+    margin-top : -10px; 
+  }
+  .titleImageText > div {
+    height: 50px;
+  } 
+  .faSize{
+    width: 30px;
+    height: 30px;
+    color: white;
+    font-family : Share Tech Mono;
+   }
 } 
 
 @media (min-width: 321px) and (max-width: 568px) {
@@ -79,17 +91,21 @@ body {
     height : 55px;
     font-size : 1.55rem;
   }
-} 
-
-@media (min-width: 200px) and (max-width: 320px) {
-  .navBar {
-    height : 45px;
-  } 
-  .navTitle {
-    line-height: 45px;
-    height : 45px;
+  .titleImageText {
+    height : 35px;
+    margin-top : -10px; 
   }
-
+  .titleImageText > div {
+    padding-top: 5px;
+    height: 35px;
+  } 
+  .faSize{
+    width: 30px;
+    height: 25px;
+    color: white; 
+    font-family : Share Tech Mono;
+   }
 } 
+ 
 
 
