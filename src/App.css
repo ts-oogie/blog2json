@@ -48,14 +48,62 @@ body {
   height: 60px;
   text-align: center;
   line-height: 0px; 
-  font-size: 20px;
+  font-size: 20px; 
+}
+
+.titleImageText>div:hover{
+  background-color: grey;
 }
 
  .faSize{
   width: 40px;
   height: 40px;
   color: white;
+  margin-top: 5px;
   font-family : Share Tech Mono;
+ }
+
+ .scrnInput {
+  background-color : grey;
+  min-height : 220px;
+  width: 60%;
+  margin: 0 auto;
+  margin-top: -22px;
+ }
+
+ .inputHeading { 
+  display: inline-block;
+  position: relative;
+  top: 90px;
+ }
+
+ input {
+  height: 40px;
+  width: 400px;
+  clear: right;
+  font-size: 30px;
+  font-family: Share Tech Mono;
+  font-weight: bold;
+ }
+
+ .submitBtn {
+  border: 1px solid white;
+  width: 80px;
+  border-radius: 25px;
+  height: 30px;
+  display: block;
+  position: relative;
+  margin-left: auto;
+  background-color: black;
+  margin-right: auto;
+  margin-top: 25px;
+  margin-bottom: 35px;
+  -webkit-transition: color 1s ease-in; 
+ }
+ 
+ .submitBtn h2 {
+  margin-top: -2px;
+  color: white;
  }
 
 @media (min-width: 569px) and  (max-width: 768px) {
@@ -97,6 +145,7 @@ body {
   }
   .titleImageText > div {
     padding-top: 5px;
+    margin-top : 5px;
     height: 35px;
   } 
   .faSize{

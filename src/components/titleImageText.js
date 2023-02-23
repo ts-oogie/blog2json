@@ -9,9 +9,9 @@ const TitleImageText = (props) => { //Or const Header = ({title})
 
 return ( 
     <header className="titleImageText">
-        <div><FontAwesomeIcon className="faSize" icon={faHeading}/></div>
-        <div><FontAwesomeIcon className="faSize" icon={faEdit}/></div>
-        <div><FontAwesomeIcon className="faSize" icon={faImage}/></div>
+        <div onMouseEnter={(e) => {props.setHoverState("heading")}} ><FontAwesomeIcon className="faSize" icon={faHeading} /></div>
+        <div onMouseEnter={(e) => {props.setHoverState("paragraph")}}><FontAwesomeIcon className="faSize" icon={faEdit}  /></div>
+        <div onMouseEnter={(e) => {props.setHoverState("image")}}><FontAwesomeIcon className="faSize" icon={faImage}  /></div>
     </header> 
 )
 }

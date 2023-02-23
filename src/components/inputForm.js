@@ -1,24 +1,23 @@
-import PropTypes from 'prop-types' 
+ 
 import { useState } from 'react'
 
-const InputTitle = ({addRecord, record}) =>{ 
+const InputHeading = ({addRecord, record}) =>{ 
 
-    const [title, setTitle] = useState("")
+    const [heading, setHeading] = useState("")
 
     return( 
-        <label>Enter Title :
-            <input
-                type="text" 
-                value={title}
-                onChange={(e) => setTitle(e.target.value)}
-            />
-            <input type="submit" onClick={()=>{
-                alert(title)
-                console.log(record)
-            }} />
-
-        </label> 
+        <div className="inputHeading">
+            <label> 
+                <input
+                    type="text" 
+                    className="form-text"
+                    value={heading} 
+                    onChange={(e) => setHeading(e.target.value)}
+                />
+                <div className="submitBtn"><h2>Add</h2></div>
+            </label> 
+        </div>
     )
 } 
 
-export default InputTitle
+export default InputHeading

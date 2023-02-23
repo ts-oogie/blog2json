@@ -1,9 +1,7 @@
 import Header from './components/Header'
 import PrintItems from './components/Menu'
-import BlogInput from './components/BlogInput'
 import TitleImageText from './components/titleImageText' 
-
-//import {BrowserRouter as Router, Route} from 
+import InputScrn from './components/InputScreen'
 import {useState} from 'react' 
 
 import './App.css';
@@ -23,19 +21,20 @@ function App() {
         id:3,
         text: "Code"
     }
-  ]
-)   
+  ])
+  
+  const [inputState, setInputState] = useState("")
+  const [hoverState, setHoverState] = useState("")
 
   const name = 'BLOG2JSON' 
 
   return (
     <div className="App">
       <Header title={name} />
-      <TitleImageText />
-      <PrintItems items={items}/>
-      <BlogInput setItems={setItems} />
-    </div>
-    // we can only return one wrapper element
+      <TitleImageText setHoverState={setHoverState}  />
+      <InputScrn hoverState={hoverState} setHoverState={setHoverState}  />
+      <PrintItems items={items}/> 
+    </div> 
   )
 }
 
