@@ -1,6 +1,6 @@
  
 import { useEffect } from 'react'
-import {InputHeading, InputParagraph}  from './inputForm'
+import {InputHeading, InputParagraph, InputMedia}  from './inputForm'
 
 const InputScrn = (props) => {   
 
@@ -58,8 +58,8 @@ const InputScrn = (props) => {
 
     else{
         return(   
-            <header onMouseLeave={(e) => {props.setHoverState("")}} className="scrnInput">
-                <h1>IMAGE</h1>
+            <header onMouseLeave={(e) => {props.setHoverState("")}} className="scrnInput" style={headerStyle}>
+                <InputMedia winWidth={props.winWidth} setName={props.setName} />
             </header>
         )
     }

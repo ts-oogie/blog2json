@@ -1,9 +1,10 @@
 import { useState, useEffect } from 'react'
+import Htype from './typeBar'
 
 //InputHeading
 const InputHeading = ({winWidth, setName}) =>{ 
 
-    const [heading, setHeading] = useState("") 
+    const [heading, setHeading] = useState("")  
 
     useEffect(() => {
         setName("Enter a Heading")
@@ -27,6 +28,7 @@ const InputHeading = ({winWidth, setName}) =>{
 
     return( 
         <div className="inputHeading">
+            <Htype />
             <label> 
                 <input
                     type="text" 
@@ -75,5 +77,44 @@ return(
 
 }
 
-export {InputParagraph, InputHeading}
+const InputMedia = ({winWidth, setName}) =>{ 
+
+    const [url, setUrl] = useState("") 
+
+    useEffect(() => {
+        setName("Upload an Image/Video")
+    })
+
+    const headingStyle = { 
+        width : (()=>{
+            if(winWidth <= 760 && winWidth >= 600){ 
+                return "300px"
+            }
+            else if(winWidth < 600){
+                return "150px"
+            }
+        })(),
+        height: "40px", 
+        clear: "right",
+        fontSize: "30px",
+        fontFamily: "Share Tech Mono",
+        fontWeight: "bold"
+    }
+
+    return( 
+        <div className="inputHeading">
+            <label> 
+                <input
+                    type="text" 
+                    style={headingStyle}
+                    className="form-text"
+                    value={url}  
+                />
+                <div className="submitBtn"><h2>Upload</h2></div>
+            </label> 
+        </div>
+    )
+}   
+
+export {InputParagraph, InputHeading, InputMedia}
   

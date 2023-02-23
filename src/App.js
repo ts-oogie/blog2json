@@ -34,11 +34,11 @@ function App() {
       <Header title={name} />
       <TitleImageText setHoverState={setHoverState}/>
       <InputScrn 
-        hoverState={hoverState} 
-        setHoverState={setHoverState} 
-        winWidth={winWidth}  
-        setName={setName} 
-        defaultName={Header.defaultProps.title} />
+          hoverState={hoverState} 
+          setHoverState={setHoverState} 
+          winWidth={winWidth}  
+          setName={setName} 
+          defaultName={Header.defaultProps.title} />
       <PrintItems items={items}/> 
     </div> 
   )
