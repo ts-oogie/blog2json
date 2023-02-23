@@ -75,16 +75,7 @@ body {
   position: relative;
   top: 90px;
  }
-
- input {
-  height: 40px;
-  width: 400px;
-  clear: right;
-  font-size: 30px;
-  font-family: Share Tech Mono;
-  font-weight: bold;
- }
-
+ 
  .submitBtn {
   border: 1px solid white;
   width: 80px;

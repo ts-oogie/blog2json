@@ -14,7 +14,12 @@ const InputHeading = ({winWidth}) =>{
             else if(winWidth < 600){
                 return "150px"
             }
-        })()
+        })(),
+        height: "40px", 
+        clear: "right",
+        fontSize: "30px",
+        fontFamily: "Share Tech Mono",
+        fontWeight: "bold"
     }
 
     return( 
