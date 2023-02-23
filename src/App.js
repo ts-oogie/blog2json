@@ -26,13 +26,15 @@ function App() {
   const [inputState, setInputState] = useState("")
   const [hoverState, setHoverState] = useState("")
 
+  let winWidth = window.innerWidth
+
   const name = 'BLOG2JSON' 
 
   return (
     <div className="App">
       <Header title={name} />
       <TitleImageText setHoverState={setHoverState} />
-      <InputScrn hoverState={hoverState} setHoverState={setHoverState}  />
+      <InputScrn hoverState={hoverState} setHoverState={setHoverState} winWidth={winWidth} />
       <PrintItems items={items}/> 
     </div> 
   )

@@ -64,8 +64,7 @@ body {
  }
 
  .scrnInput {
-  background-color : grey;
-  min-height : 235px;
+  background-color : grey; 
   width: 60%;
   margin: 0 auto;
   margin-top: -22px;

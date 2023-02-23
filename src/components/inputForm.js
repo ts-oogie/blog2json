@@ -2,15 +2,27 @@
 import { useState } from 'react'
 
 //InputHeading
-const InputHeading = ({addRecord, record}) =>{ 
+const InputHeading = ({winWidth}) =>{ 
 
-    const [heading, setHeading] = useState("")
+    const [heading, setHeading] = useState("") 
+    const headingStyle = {
+        
+        width : (()=>{
+            if(winWidth <= 760 && winWidth >= 600){ 
+                return "300px"
+            }
+            else if(winWidth < 600){
+                return "150px"
+            }
+        })()
+    }
 
     return( 
         <div className="inputHeading">
             <label> 
                 <input
                     type="text" 
+                    style={headingStyle}
                     className="form-text"
                     value={heading} 
                     onChange={(e) => setHeading(e.target.value)}
