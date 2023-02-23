@@ -65,7 +65,7 @@ body {
 
  .scrnInput {
   background-color : grey;
-  min-height : 220px;
+  min-height : 235px;
   width: 60%;
   margin: 0 auto;
   margin-top: -22px;
@@ -97,13 +97,17 @@ body {
   background-color: black;
   margin-right: auto;
   margin-top: 25px;
-  margin-bottom: 35px;
-  -webkit-transition: color 1s ease-in; 
+  margin-bottom: 35px; 
+ }
+
+ *:focus {
+  outline: none;
  }
  
  .submitBtn h2 {
-  margin-top: -2px;
+  margin-top: 1px;
   color: white;
+  font-family: Share Tech Mono;
  }
 
 @media (min-width: 569px) and  (max-width: 768px) {

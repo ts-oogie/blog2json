@@ -31,7 +31,7 @@ function App() {
   return (
     <div className="App">
       <Header title={name} />
-      <TitleImageText setHoverState={setHoverState}  />
+      <TitleImageText setHoverState={setHoverState} />
       <InputScrn hoverState={hoverState} setHoverState={setHoverState}  />
       <PrintItems items={items}/> 
     </div> 

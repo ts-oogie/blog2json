@@ -1,6 +1,7 @@
  
 import { useState } from 'react'
 
+//InputHeading
 const InputHeading = ({addRecord, record}) =>{ 
 
     const [heading, setHeading] = useState("")
@@ -18,6 +19,23 @@ const InputHeading = ({addRecord, record}) =>{
             </label> 
         </div>
     )
-} 
+}   
 
-export default InputHeading
+//InputParagraph
+const InputParagraph = () => { 
+
+const [paragraph, setParagraph] = useState("")
+
+return( 
+    <div className="inputHeading">
+        <label>  
+            <textarea rows="10" cols="48" name="paragraph" > </textarea>
+            <div className="submitBtn"><h2>Add</h2></div>
+        </label> 
+    </div>
+) 
+
+}
+
+export {InputParagraph, InputHeading}
+  
