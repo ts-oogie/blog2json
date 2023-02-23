@@ -1,10 +1,6 @@
  import PropTypes from 'prop-types' 
  
- const Header = (props) => { //Or const Header = ({title})
-    //or  {title} instead of {props.title} on line 4
-  const btnClick = () => {
-    alert("I was clicked")
-  }
+ const Header = (props) => {  
 
   return (
     <header className="navBar">

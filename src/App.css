@@ -27,6 +27,7 @@ body {
   line-height : 80px;
   font-family : Share Tech Mono;
   font-size : 2rem;
+  margin-top: -10px;
 }
 
 .titleImageText {

@@ -1,12 +1,15 @@
- 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
 //InputHeading
-const InputHeading = ({winWidth}) =>{ 
+const InputHeading = ({winWidth, setName}) =>{ 
 
     const [heading, setHeading] = useState("") 
-    const headingStyle = {
-        
+
+    useEffect(() => {
+        setName("Enter a Heading")
+    })
+
+    const headingStyle = { 
         width : (()=>{
             if(winWidth <= 760 && winWidth >= 600){ 
                 return "300px"
@@ -39,14 +42,32 @@ const InputHeading = ({winWidth}) =>{
 }   
 
 //InputParagraph
-const InputParagraph = () => { 
+const InputParagraph = ({winWidth, setName}) => { 
 
 const [paragraph, setParagraph] = useState("")
+
+useEffect(() => {
+    setName("Enter a Paragraph")
+})
+
+const textAreaStyle = {
+    cols: (()=>{
+        if(winWidth > 760){
+            return "48"
+        }
+        else if(winWidth <= 760 && winWidth >= 600){  
+            return "40"
+        }
+        else if(winWidth < 600){
+            return "35"
+        }
+    })()
+}
 
 return( 
     <div className="inputHeading">
         <label>  
-            <textarea rows="10" cols="48" name="paragraph" > </textarea>
+            <textarea rows="10" cols={textAreaStyle.cols} name="paragraph" > </textarea>
             <div className="submitBtn"><h2>Add</h2></div>
         </label> 
     </div>

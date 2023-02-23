@@ -25,23 +25,27 @@ function App() {
   
   const [inputState, setInputState] = useState("")
   const [hoverState, setHoverState] = useState("")
+  const [name, setName] = useState(Header.defaultProps.title)
 
-  let winWidth = window.innerWidth
-
-  const name = 'BLOG2JSON' 
+  let winWidth = window.innerWidth  
 
   return (
     <div className="App">
       <Header title={name} />
-      <TitleImageText setHoverState={setHoverState} />
-      <InputScrn hoverState={hoverState} setHoverState={setHoverState} winWidth={winWidth} />
+      <TitleImageText setHoverState={setHoverState}/>
+      <InputScrn 
+        hoverState={hoverState} 
+        setHoverState={setHoverState} 
+        winWidth={winWidth}  
+        setName={setName} 
+        defaultName={Header.defaultProps.title} />
       <PrintItems items={items}/> 
     </div> 
   )
 }
 
 Header.defaultProps = {
-  title: "I - Goose"
+  title: "BLOG2JSON"
 }
 
 export default App;

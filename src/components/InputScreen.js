@@ -1,8 +1,8 @@
  
-import { useState } from 'react'
+import { useEffect } from 'react'
 import {InputHeading, InputParagraph}  from './inputForm'
 
-const InputScrn = (props) => {  
+const InputScrn = (props) => {   
 
     const headerStyle = {
         minHeight: (()=>{
@@ -33,17 +33,17 @@ const InputScrn = (props) => {
         })()
     }
 
-    if(props.hoverState == ""){
-        console.log("")
+    if(props.hoverState == ""){ 
+        props.setName(props.defaultName)
         return(   
             <></>
         )
     }
 
-    else if(props.hoverState == "heading"){
+    else if(props.hoverState == "heading"){ 
         return(   
             <header onMouseLeave={(e) => {props.setHoverState("")}} className="scrnInput" style={headerStyle} >
-                <InputHeading winWidth={props.winWidth} />
+                <InputHeading winWidth={props.winWidth} setName={props.setName}/>
             </header>
         )
     }
@@ -51,7 +51,7 @@ const InputScrn = (props) => {
     else if(props.hoverState == "paragraph"){
         return(   
             <header onMouseLeave={(e) => {props.setHoverState("")}} className="scrnInput" style={headerStyle}>
-                <InputParagraph winWidth={props.winWidth}  />
+                <InputParagraph winWidth={props.winWidth} setName={props.setName} />
             </header>
         )
     }
