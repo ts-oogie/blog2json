@@ -10,20 +10,20 @@ function App() {
 
   const [count, setCount] = useState(0)
 
-  const [items, setItems] = useState([  
-    {
-        id: 0,
-        text: "Design",
-        type: "Heading",
-        styling: {
+  //const [obj, setObj] = useState({})
 
-        } 
+  const [items, setItems] = useState([  //the JS Obj
+    {
+        id: 0, 
+        type: "heading",
+        text: "Design",
+        size: "H1"
     } 
   ])
   
-  const [inputState, setInputState] = useState("")
-  const [hoverState, setHoverState] = useState("")
-  const [name, setName] = useState(Header.defaultProps.title)
+  //const [inputState, setInputState] = useState("") 
+  const [hoverState, setHoverState] = useState("") //for icons
+  const [name, setName] = useState(Header.defaultProps.title) //name of header
 
   let winWidth = window.innerWidth  
 
@@ -32,11 +32,14 @@ function App() {
       <Header title={name} />
       <TitleImageText setHoverState={setHoverState}/>
       <InputScrn 
-          hoverState={hoverState} 
-          setHoverState={setHoverState} 
+          hoverState={hoverState}  
           winWidth={winWidth}  
-          setName={setName} 
+          items={items}
           setItems={setItems}
+          setName={setName}  
+          setHoverState={setHoverState}  
+          count={count}
+          setCount={setCount}
           defaultName={Header.defaultProps.title} />
       <PrintItems items={items}/> 
     </div> 

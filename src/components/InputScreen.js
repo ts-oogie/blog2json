@@ -1,21 +1,31 @@
  
 import { useEffect } from 'react'
-import {InputHeading, InputParagraph, InputMedia, setItems}  from './inputForm'
+import {InputHeading, InputParagraph, InputMedia}  from './inputForm'
 
-const InputScrn = (props) => {   
+const InputScrn = ({
+        winWidth, 
+        hoverState, 
+        setHoverState, 
+        defaultName,  
+        setName, 
+        items,
+        setItems, 
+        count, 
+        setCount
+    }) => {   
 
     const headerStyle = {
         minHeight: (()=>{
-            if(props.winWidth > 768){ 
-                if(props.hoverState == "paragraph"){ 
+            if( winWidth > 768){ 
+                if( hoverState == "paragraph"){ 
                     return "350px"
                 }
                 else{
                     return "250px"
                 } 
             }
-            else if (props.winWidth <= 768 && props.winWidth > 569){
-                if(props.hoverState == "paragraph"){ 
+            else if ( winWidth <= 768 &&  winWidth > 569){
+                if( hoverState == "paragraph"){ 
                     return "300px"
                 }
                 else{
@@ -23,7 +33,7 @@ const InputScrn = (props) => {
                 } 
             }
             else {
-                if(props.hoverState == "paragraph"){ 
+                if( hoverState == "paragraph"){ 
                     return "250px"
                 }
                 else{
@@ -33,33 +43,39 @@ const InputScrn = (props) => {
         })()
     }
 
-    if (props.hoverState == ""){ 
-        props.setName(props.defaultName)
+    if ( hoverState == ""){ 
+         setName( defaultName)
         return(   
             <></>
         )
     }
 
-    else if (props.hoverState == "heading"){ 
+    else if (hoverState == "heading"){ 
         return(   
-            <header onMouseLeave={(e) => {props.setHoverState("")}} className="scrnInput" style={headerStyle} >
-                <InputHeading winWidth={props.winWidth} setName={props.setName}/>
+            <header onMouseLeave={(e) => { setHoverState("")}} className="scrnInput" style={headerStyle} >
+                <InputHeading 
+                    winWidth={winWidth} 
+                    setName={setName}  
+                    items={items}
+                    setItems={setItems}
+                    count={count} 
+                    setCount={setCount}/>
             </header>
         )
     }
 
-    else if (props.hoverState == "paragraph"){
+    else if (hoverState == "paragraph"){
         return(   
-            <header onMouseLeave={(e) => {props.setHoverState("")}} className="scrnInput" style={headerStyle}>
-                <InputParagraph winWidth={props.winWidth} setName={props.setName} />
+            <header onMouseLeave={(e) => { setHoverState("")}} className="scrnInput" style={headerStyle}>
+                <InputParagraph winWidth={ winWidth} setName={ setName} count={count} setCount={setCount} />
             </header>
         )
     }
 
     else {
         return(   
-            <header onMouseLeave={(e) => {props.setHoverState("")}} className="scrnInput" style={headerStyle}>
-                <InputMedia winWidth={props.winWidth} setName={props.setName} />
+            <header onMouseLeave={(e) => { setHoverState("")}} className="scrnInput" style={headerStyle}>
+                <InputMedia winWidth={ winWidth} setName={ setName}  count={count} setCount={setCount} />
             </header>
         )
     }

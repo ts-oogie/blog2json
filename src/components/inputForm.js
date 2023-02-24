@@ -2,10 +2,13 @@ import { useState, useEffect } from 'react'
 import Htype from './typeBar'
 
 //InputHeading
-const InputHeading = ({winWidth, setName}) =>{ 
+const InputHeading = ({winWidth, setName, items, setItems, count, setCount}) =>{ 
+
+    let thisObj = {}
+    let newItem = items
 
     const [heading, setHeading] = useState("")  
-    const [headerType, setHeaderType] = useState("") 
+    const [headerType, setHeaderType] = useState(InputHeading.defaultProps.headerStyle) 
 
     useEffect(() => {
         setName("Enter a Heading")
@@ -38,11 +41,28 @@ const InputHeading = ({winWidth, setName}) =>{
                     value={heading} 
                     onChange={(e) => setHeading(e.target.value)}
                 />
-                <div className="submitBtn"><h2>Add</h2></div>
+                <div className="submitBtn" onClick={(e)=>{
+                    e.preventDefault()
+                    setCount = count++ 
+
+                    thisObj.id = count
+                    thisObj.type = "heading"
+                    thisObj.text = heading
+                    thisObj.size = headerType 
+                    
+                    newItem.push(thisObj)
+
+                    setItems(newItem)
+
+                }}><h2>Add</h2></div>
             </label> 
         </div>
     )
 }   
+
+InputHeading.defaultProps = {
+    headerStyle : "H1"
+}
 
 //InputParagraph
 const InputParagraph = ({winWidth, setName}) => { 
