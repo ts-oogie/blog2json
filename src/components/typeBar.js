@@ -1,9 +1,7 @@
 import {useState} from 'react'
 import HeaderButton from './headerButton'
 
-const HType = () => {
-
-    const [headerType, setHeaderType] = useState("")
+const HType = ({headerType, setHeaderType}) => { 
 
     const cssTB = {
         display: "flex",
@@ -21,17 +19,17 @@ const HType = () => {
 
     return ( 
         <header className="typeBar" style={cssTB}>
-            <div style={cssTBDiv}>
-                <HeaderButton headerType={"h1"} setHeaderType={setHeaderType}/>
+            <div className="tbButtonContainer">
+                <HeaderButton hType={"H1"} headerType={headerType} setHeaderType={setHeaderType}/>
             </div>
-            <div style={cssTBDiv}>
-                <HeaderButton headerType={"h2"} setHeaderType={setHeaderType}/>
+            <div className="tbButtonContainer">
+                <HeaderButton hType={"H2"} headerType={headerType} setHeaderType={setHeaderType}/>
             </div>
-            <div style={cssTBDiv}>
-                <HeaderButton headerType={"h3"} setHeaderType={setHeaderType}/>
+            <div className="tbButtonContainer">
+                <HeaderButton hType={"H3"} headerType={headerType} setHeaderType={setHeaderType}/>
             </div>
-            <div style={cssTBDiv}>
-                <HeaderButton headerType={"h4"} setHeaderType={setHeaderType}/>
+            <div className="tbButtonContainer">
+                <HeaderButton hType={"H4"} headerType={headerType}  setHeaderType={setHeaderType}/>
             </div>
         </header> 
     )

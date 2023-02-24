@@ -5,6 +5,7 @@ import Htype from './typeBar'
 const InputHeading = ({winWidth, setName}) =>{ 
 
     const [heading, setHeading] = useState("")  
+    const [headerType, setHeaderType] = useState("") 
 
     useEffect(() => {
         setName("Enter a Heading")
@@ -28,7 +29,7 @@ const InputHeading = ({winWidth, setName}) =>{
 
     return( 
         <div className="inputHeading">
-            <Htype />
+            <Htype headerType={headerType} setHeaderType={setHeaderType} />
             <label> 
                 <input
                     type="text" 
