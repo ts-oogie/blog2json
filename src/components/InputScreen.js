@@ -51,6 +51,7 @@ const InputScrn = ({
     }
 
     else if (hoverState == "heading"){ 
+ 
         return(   
             <header onMouseLeave={(e) => { setHoverState("")}} className="scrnInput" style={headerStyle} >
                 <InputHeading 

@@ -6,6 +6,7 @@ const InputHeading = ({winWidth, setName, items, setItems, count, setCount}) =>{
 
     let thisObj = {}
     let newItem = items
+    let newCount
 
     const [heading, setHeading] = useState("")  
     const [headerType, setHeaderType] = useState(InputHeading.defaultProps.headerStyle) 
@@ -43,9 +44,11 @@ const InputHeading = ({winWidth, setName, items, setItems, count, setCount}) =>{
                 />
                 <div className="submitBtn" onClick={(e)=>{
                     e.preventDefault()
-                    setCount = count++ 
+                     
+                    newCount = count + 1 
+                    setCount(newCount)
 
-                    thisObj.id = count
+                    thisObj.id = newCount
                     thisObj.type = "heading"
                     thisObj.text = heading
                     thisObj.size = headerType 
