@@ -40,14 +40,15 @@ function App() {
           setHoverState={setHoverState}  
           count={count}
           setCount={setCount}
-          defaultName={Header.defaultProps.title} />
+          defaultName={Header.defaultProps} />
       <PrintItems items={items}/> 
     </div> 
   )
 }
 
 Header.defaultProps = {
-  title: "BLOG2JSON"
+  title: "BLOG2JSON",
+  errBlankInput: "Please enter a title"
 }
 
 export default App;

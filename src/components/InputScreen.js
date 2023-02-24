@@ -44,7 +44,7 @@ const InputScrn = ({
     }
 
     if ( hoverState == ""){ 
-         setName( defaultName)
+         setName( defaultName.title)
         return(   
             <></>
         )
@@ -55,6 +55,7 @@ const InputScrn = ({
         return(   
             <header onMouseLeave={(e) => { setHoverState("")}} className="scrnInput" style={headerStyle} >
                 <InputHeading 
+                    defaultName={defaultName}
                     winWidth={winWidth} 
                     setName={setName}  
                     items={items}

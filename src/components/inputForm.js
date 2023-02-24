@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import Htype from './typeBar'
 
 //InputHeading
-const InputHeading = ({winWidth, setName, items, setItems, count, setCount}) =>{ 
+const InputHeading = ({winWidth, setName, items, setItems, count, setCount, defaultName}) =>{ 
 
     let thisObj = {}
     let newItem = items
@@ -43,19 +43,23 @@ const InputHeading = ({winWidth, setName, items, setItems, count, setCount}) =>{
                     onChange={(e) => setHeading(e.target.value)}
                 />
                 <div className="submitBtn" onClick={(e)=>{
-                    e.preventDefault()
-                     
-                    newCount = count + 1 
-                    setCount(newCount)
+                    e.preventDefault() 
 
-                    thisObj.id = newCount
-                    thisObj.type = "heading"
-                    thisObj.text = heading
-                    thisObj.size = headerType 
+                    if(heading == ""){
+                        alert("Please enter a title")
+                    }
                     
-                    newItem.push(thisObj)
+                    else{
+                        newCount = count + 1 
+                        setCount(newCount)
 
-                    setItems(newItem)
+                        thisObj.id = newCount
+                        thisObj.type = "heading"
+                        thisObj.text = heading
+                        thisObj.size = headerType 
+                        newItem.push(thisObj) 
+                        setItems(newItem)
+                    }
 
                 }}><h2>Add</h2></div>
             </label> 
