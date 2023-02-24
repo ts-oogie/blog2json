@@ -5,7 +5,7 @@ const PrintItems = ({items}) => {
     return(
         <>
         {items.map((item) => (
-            <Item id={item.id} text={item.text}  />
+            <Item id={item.id} text={item.text} type={item.type} size={item.size} />
         ))}
         </>
     )
