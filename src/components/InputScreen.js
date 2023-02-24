@@ -68,15 +68,27 @@ const InputScrn = ({
     else if (hoverState == "paragraph"){
         return(   
             <header onMouseLeave={(e) => { setHoverState("")}} className="scrnInput" style={headerStyle}>
-                <InputParagraph winWidth={ winWidth} setName={ setName} count={count} setCount={setCount} />
+                <InputParagraph 
+                    winWidth={ winWidth} 
+                    setName={ setName} 
+                    count={count} 
+                    setCount={setCount} />
             </header>
         )
     }
 
     else {
         return(   
-            <header onMouseLeave={(e) => { setHoverState("")}} className="scrnInput" style={headerStyle}>
-                <InputMedia winWidth={ winWidth} setName={ setName}  count={count} setCount={setCount} />
+            <header onMouseLeave={
+                (e) => { setHoverState("")
+                }} 
+                className="scrnInput" 
+                style={headerStyle}>
+                <InputMedia 
+                    winWidth={ winWidth} 
+                    setName={ setName}  
+                    count={count} 
+                    setCount={setCount} />
             </header>
         )
     }
