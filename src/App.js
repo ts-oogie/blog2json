@@ -8,19 +8,17 @@ import './App.css';
 
 function App() { 
 
-  const [items, setItems] = useState([ //items is our current State, setItems is the func we use to update the state, useState is where we set the initial state
+  const [count, setCount] = useState(0)
+
+  const [items, setItems] = useState([  
     {
-        id: 1,
-        title: "Design" 
-    },
-    {
-        id: 2,
-        text: "Develop"
-    },
-    {
-        id:3,
-        text: "Code"
-    }
+        id: 0,
+        text: "Design",
+        type: "Heading",
+        styling: {
+
+        } 
+    } 
   ])
   
   const [inputState, setInputState] = useState("")
@@ -38,6 +36,7 @@ function App() {
           setHoverState={setHoverState} 
           winWidth={winWidth}  
           setName={setName} 
+          setItems={setItems}
           defaultName={Header.defaultProps.title} />
       <PrintItems items={items}/> 
     </div> 

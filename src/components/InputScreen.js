@@ -1,6 +1,6 @@
  
 import { useEffect } from 'react'
-import {InputHeading, InputParagraph, InputMedia}  from './inputForm'
+import {InputHeading, InputParagraph, InputMedia, setItems}  from './inputForm'
 
 const InputScrn = (props) => {   
 
@@ -33,14 +33,14 @@ const InputScrn = (props) => {
         })()
     }
 
-    if(props.hoverState == ""){ 
+    if (props.hoverState == ""){ 
         props.setName(props.defaultName)
         return(   
             <></>
         )
     }
 
-    else if(props.hoverState == "heading"){ 
+    else if (props.hoverState == "heading"){ 
         return(   
             <header onMouseLeave={(e) => {props.setHoverState("")}} className="scrnInput" style={headerStyle} >
                 <InputHeading winWidth={props.winWidth} setName={props.setName}/>
@@ -48,7 +48,7 @@ const InputScrn = (props) => {
         )
     }
 
-    else if(props.hoverState == "paragraph"){
+    else if (props.hoverState == "paragraph"){
         return(   
             <header onMouseLeave={(e) => {props.setHoverState("")}} className="scrnInput" style={headerStyle}>
                 <InputParagraph winWidth={props.winWidth} setName={props.setName} />
@@ -56,7 +56,7 @@ const InputScrn = (props) => {
         )
     }
 
-    else{
+    else {
         return(   
             <header onMouseLeave={(e) => {props.setHoverState("")}} className="scrnInput" style={headerStyle}>
                 <InputMedia winWidth={props.winWidth} setName={props.setName} />
