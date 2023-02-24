@@ -3,7 +3,7 @@
  const Header = (props) => {  
 
   return (
-    <header className="navBar">
+    <header className="navBar  "> 
       <h1 className="navTitle" style={{color: "white"}}>{props.title}</h1>  
     </header> 
   )

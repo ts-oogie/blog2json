@@ -94,7 +94,7 @@ return(
     <div className="inputHeading">
         <label>  
             <textarea rows="10" cols={textAreaStyle.cols} name="paragraph" > </textarea>
-            <div className="submitBtn"><h2>Add</h2></div>
+            <div className="submitBtn"><h4>Add</h4></div>
         </label> 
     </div>
 ) 
