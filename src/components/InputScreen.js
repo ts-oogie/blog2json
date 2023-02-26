@@ -18,7 +18,7 @@ const InputScrn = ({
         minHeight: (()=>{
             if( winWidth > 768){ 
                 if( hoverState == "paragraph"){ 
-                    return "350px"
+                    return "450px"
                 }
                 else{
                     return "250px"
@@ -44,7 +44,7 @@ const InputScrn = ({
     }
 
     if ( hoverState == ""){ 
-         setName( defaultName.title)
+         setName(defaultName.title)
         return(   
             <></>
         )
@@ -70,10 +70,13 @@ const InputScrn = ({
         return(   
             <header onMouseLeave={(e) => { setHoverState("")}} className="scrnInput" style={headerStyle}>
                 <InputParagraph 
-                    winWidth={ winWidth} 
-                    setName={ setName} 
+                    defaultName={defaultName}
+                    winWidth={winWidth} 
+                    setName={setName}  
+                    items={items}
+                    setItems={setItems}
                     count={count} 
-                    setCount={setCount} />
+                    setCount={setCount}/>
             </header>
         )
     }

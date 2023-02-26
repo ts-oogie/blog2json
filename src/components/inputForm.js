@@ -72,9 +72,19 @@ InputHeading.defaultProps = {
 }
 
 //InputParagraph
-const InputParagraph = ({winWidth, setName}) => { 
+const InputParagraph = ({winWidth, setName, items, setItems, count, setCount, defaultName}) => { 
+
+const cssPInput = {
+    fontFamily: 'Share Tech Mono',
+    fontSize: '1.5rem'
+}
+
+let thisObj = {}
+let newItem = items
+let newCount
 
 const [paragraph, setParagraph] = useState("")
+const [headerType, setHeaderType] = useState(InputHeading.defaultProps.headerStyle) 
 
 useEffect(() => {
     setName("Enter a Paragraph")
@@ -97,8 +107,37 @@ const textAreaStyle = {
 return( 
     <div className="inputHeading">
         <label>  
-            <textarea rows="10" cols={textAreaStyle.cols} name="paragraph" > </textarea>
-            <div className="submitBtn"><h4>Add</h4></div>
+            <textarea 
+                rows="10" 
+                cols={textAreaStyle.cols} 
+                name="paragraph" 
+                type="text"  
+                style={cssPInput}
+                value={paragraph} 
+                onChange={(e) => setParagraph(e.target.value)}
+            >
+            </textarea>
+ 
+            <div className="submitBtn" onClick={(e)=>{
+                    e.preventDefault() 
+
+                    if(paragraph == ""){
+                        alert("Please enter a paragraph")
+                    }
+                    
+                    else{
+                        newCount = count + 1 
+                        setCount(newCount)
+
+                        thisObj.id = newCount
+                        thisObj.type = "paragraph"
+                        thisObj.text = paragraph
+                        thisObj.size = ""
+                        newItem.push(thisObj) 
+                        setItems(newItem)
+                    }
+
+                }}><h2>Add</h2></div>
         </label> 
     </div>
 ) 

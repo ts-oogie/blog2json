@@ -10,8 +10,22 @@ html {
 }
 
 h1 {
-  font-size: 1rem;
+  font-family :  Share Tech Mono;
+} 
+
+h2 {
+  font-family :  Share Tech Mono;
 }
+
+h3 {
+  font-family :  Share Tech Mono;
+}
+
+h4 {
+  font-family :  Share Tech Mono;
+}
+
+
 
 .App {
   text-align: center;
@@ -79,12 +93,13 @@ h1 {
   width: 60%;
   margin: 0 auto;
   margin-top: -22px;
+
  }
 
  .inputHeading { 
   display: inline-block;
   position: relative;
-  top: 90px;
+  top: 90px; 
  }
  
  .submitBtn {
@@ -117,6 +132,7 @@ h1 {
   margin-bottom: 20px;
 }
 
+ 
 @media (min-width: 569px) and  (max-width: 768px) {
   .navBar {
     height : 65px;

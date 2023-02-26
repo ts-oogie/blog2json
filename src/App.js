@@ -41,7 +41,7 @@ function App() {
           count={count}
           setCount={setCount}
           defaultName={Header.defaultProps} />
-      <PrintItems items={items}/> 
+      <PrintItems items={items} count={count}/> 
     </div> 
   )
 }
