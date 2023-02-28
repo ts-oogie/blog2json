@@ -1,4 +1,3 @@
- 
 import { useEffect } from 'react'
 import {InputHeading, InputParagraph, InputMedia}  from './inputForm'
 
