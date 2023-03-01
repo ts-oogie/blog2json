@@ -1,4 +1,4 @@
- 
+import React from 'react'
 import Button from './Button'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEdit, faImage  } from '@fortawesome/free-regular-svg-icons'

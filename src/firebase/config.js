@@ -1,8 +1,7 @@
 
-import * as firebase from 'firebase/app'
-import 'firebase/store'
-import 'firebase/firestore'
-
+import { initializeApp } from "firebase/app"
+import {getStorage} from 'firebase/storage'
+import {getFirestore, collection, getDocs} from 'firebase/firestore/lite'
 
 const firebaseConfig = {
     apiKey: "AIzaSyDDGYc0Tk7HEJ1-ttB8r0da5lDhy0IIIWQ",
@@ -16,8 +15,8 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig)
 
-const projectStorage = firebase.storage()
-const projectFirestore = firebase.firestore()
+const projectStorage = getStorage(app)
+const projectFirestore = getFirestore(app)
 
-export { projectStorage, projectFirestore} 
+export { projectFirestore, projectStorage } 
 

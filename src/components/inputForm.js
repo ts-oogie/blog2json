@@ -1,5 +1,8 @@
+import React from 'react'
+
 import { useState, useEffect } from 'react'
 import Htype from './typeBar'
+import { projectStorage, projectFirestore} from '../firebase/config.js'
 
 //InputHeading
 const InputHeading = ({winWidth, setName, items, setItems, count, setCount, defaultName}) =>{ 
@@ -144,7 +147,7 @@ return(
 
 }
 
-const InputMedia = ({winWidth, setName}) =>{ 
+const InputMedia = ({winWidth, setName, items, setItems, count, setCount, defaultName}) =>{ 
 
     const [url, setUrl] = useState("") 
 

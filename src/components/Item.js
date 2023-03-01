@@ -1,3 +1,5 @@
+import React from 'react'
+
 const Item = ({id, text, type, size, count}) => {
     
     const cssItems = {

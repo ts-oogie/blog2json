@@ -1,3 +1,5 @@
+import React from 'react'
+
 import Header from './components/Header'
 import PrintItems from './components/Menu'
 import TitleImageText from './components/titleImageText' 

@@ -1,3 +1,5 @@
+
+import React from 'react'
 import { useEffect } from 'react'
 import {InputHeading, InputParagraph, InputMedia}  from './inputForm'
 
