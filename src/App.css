@@ -23,9 +23,7 @@ h3 {
 
 h4 {
   font-family :  Share Tech Mono;
-}
-
-
+} 
 
 .App {
   text-align: center;
@@ -41,7 +39,7 @@ h4 {
 .navBar {
   height : 80px;
   background-color: #000000; 
-  margin-top : -20px;
+  margin-top : -20px; 
 } 
 
 .navTitle {
@@ -50,10 +48,8 @@ h4 {
   font-family : Dosis;
   font-size : 2rem;
   margin-top: -10px;
-}
-
+} 
  
-
 .titleImageText {
   height : 60px; 
   margin-top : -20px;
@@ -74,6 +70,8 @@ h4 {
   text-align: center;
   line-height: 0px; 
   font-size: 20px; 
+  border-left: 0px;
+  border-bottom: 0px;
 }
 
 .titleImageText>div:hover{
@@ -98,14 +96,18 @@ h4 {
   background-color : grey; 
   width: 60%;
   margin: 0 auto;
-  margin-top: -22px;
-
+  margin-top: -22px; 
+  border-bottom: 0px;
  }
 
  .inputHeading { 
   display: inline-block;
   position: relative;
-  top: 90px; 
+  top: 90px;  
+ }
+
+ .form-image {
+  margin-top: 25px;
  }
  
  .submitBtn {

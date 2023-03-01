@@ -10,7 +10,9 @@ const PrintItems = ({items, count}) => {
         position: "relative",
         display: "inline-block",
         textAlign: "center",
-        paddingBottom: "15px"
+        paddingBottom: "15px",
+        borderTop: "4px solid black",
+        borderBottom: "4px solid black"
     }
 
     return(

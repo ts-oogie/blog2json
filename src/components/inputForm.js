@@ -180,9 +180,7 @@ const InputMedia = ({winWidth, setName, items, setItems, count, setCount, defaul
         clear: "left",
         marginRight : "-50px",
         fontSize: "25px",
-        fontFamily: "Share Tech Mono",
-         
-        
+        fontFamily: "Share Tech Mono"   
     }
 
     return( 
@@ -191,7 +189,7 @@ const InputMedia = ({winWidth, setName, items, setItems, count, setCount, defaul
                 <input
                     type="file" 
                     style={headingStyle}
-                    className="form-text"
+                    className="form-image"
                     onChange={changeHandle} 
                 />
                 <div className="errorMsg">
