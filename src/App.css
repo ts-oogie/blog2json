@@ -87,6 +87,12 @@ h4 {
   margin-top: 5px;
   font-family : Dosis;
  }
+ 
+.errorMsg{
+  font-family: Dosis;
+  font-size: 1.5rem;
+  color: black;
+}
 
  .scrnInput {
   background-color : grey; 

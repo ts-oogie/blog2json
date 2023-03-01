@@ -1,5 +1,4 @@
 import React from 'react'
-
 import { useState, useEffect } from 'react'
 import Htype from './typeBar'
 import { projectStorage, projectFirestore} from '../firebase/config.js'
@@ -149,11 +148,24 @@ return(
 
 const InputMedia = ({winWidth, setName, items, setItems, count, setCount, defaultName}) =>{ 
 
-    const [url, setUrl] = useState("") 
+    const [file, setFile] = useState(null) 
+    const [error, setError] = useState(null)
+    const types = ['image/png', 'image/jpeg']
 
     useEffect(() => {
         setName("Upload an Image/Video")
     })
+
+    const changeHandle = (e) => { 
+        let fileSelected = e.target.files[0]
+        if (fileSelected && types.includes(fileSelected.type)){
+            setError(null) 
+            setFile(fileSelected) 
+        } else{
+            setFile(null)
+            setError("Please select an image type (.png or .jpg)")
+        }
+    }
 
     const headingStyle = { 
         width : (()=>{
@@ -164,24 +176,28 @@ const InputMedia = ({winWidth, setName, items, setItems, count, setCount, defaul
                 return "150px"
             }
         })(),
-        height: "40px", 
-        clear: "right",
-        fontSize: "30px",
+        height: "35px", 
+        clear: "left",
+        marginRight : "-50px",
+        fontSize: "25px",
         fontFamily: "Share Tech Mono",
-        fontWeight: "bold"
+         
+        
     }
 
     return( 
         <div className="inputHeading">
-            <label> 
+            <form> 
                 <input
-                    type="text" 
+                    type="file" 
                     style={headingStyle}
                     className="form-text"
-                    value={url}  
+                    onChange={changeHandle} 
                 />
-                <div className="submitBtn"><h2>Upload</h2></div>
-            </label> 
+                <div className="errorMsg">
+                    {error && <div className="errorMsg">{error}</div>}
+                </div>
+            </form> 
         </div>
     )
 }   

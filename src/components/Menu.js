@@ -9,7 +9,8 @@ const PrintItems = ({items, count}) => {
         width: "60%",
         position: "relative",
         display: "inline-block",
-        textAlign: "center"
+        textAlign: "center",
+        paddingBottom: "15px"
     }
 
     return(
