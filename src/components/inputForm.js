@@ -2,7 +2,7 @@ import React from 'react'
 import { useState, useEffect } from 'react'
 import Htype from './typeBar'
 import { projectStorage, projectFirestore} from '../firebase/config.js'
-
+import ProgressBar from './ProgressBar'
 //InputHeading
 const InputHeading = ({winWidth, setName, items, setItems, count, setCount, defaultName}) =>{ 
 
@@ -194,6 +194,8 @@ const InputMedia = ({winWidth, setName, items, setItems, count, setCount, defaul
                 />
                 <div className="errorMsg">
                     {error && <div className="errorMsg">{error}</div>}
+                    {file && <div>{file.name}</div>}
+                    {file && <ProgressBar file={file} setFile={setFile} />}
                 </div>
             </form> 
         </div>

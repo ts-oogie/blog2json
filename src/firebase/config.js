@@ -1,6 +1,6 @@
 
 import { initializeApp } from "firebase/app"
-import {getStorage} from 'firebase/storage'
+import {getStorage, ref, uploadBytesResumable} from 'firebase/storage'
 import {getFirestore, collection, getDocs} from 'firebase/firestore/lite'
 
 const firebaseConfig = {
@@ -15,8 +15,8 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig)
 
-const projectStorage = getStorage(app)
-const projectFirestore = getFirestore(app)
+const projectStorage = getStorage(app)  //fileStorage
+const projectFirestore = getFirestore(app) //db 
 
-export { projectFirestore, projectStorage } 
+export { projectFirestore, projectStorage, ref, uploadBytesResumable } 
 
