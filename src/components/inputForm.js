@@ -202,5 +202,9 @@ const InputMedia = ({winWidth, setName, items, setItems, count, setCount, defaul
     )
 }   
 
+//line 196 : if there is an error, then we show the div with errormessage
+//line 197 : if there is a file, then we show the file name
+//line 198 : if there is a file, then we show the progressbar
+
 export {InputParagraph, InputHeading, InputMedia}
   
