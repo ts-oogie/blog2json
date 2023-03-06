@@ -194,8 +194,8 @@ const InputMedia = ({winWidth, setName, items, setItems, count, setCount, defaul
                 />
                 <div className="errorMsg">
                     {error && <div className="errorMsg">{error}</div>}
-                    {file && <div>{file.name}</div>}
-                    {file && <ProgressBar file={file} setFile={setFile} />}
+                     
+                    {file && <ProgressBar file={file}  />}
                 </div>
             </form> 
         </div>

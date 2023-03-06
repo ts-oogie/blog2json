@@ -3,17 +3,20 @@ import {projectStorage, ref, uploadBytesResumable, getDownloadURL} from '../fire
 
 const useStorage = (file) => {
 
-    const [progress, setProgress] = useState(0)
+    const [progress, setProgress] = useState("0")
     const [error, setError] = useState(null)
     const [url, setUrl] = useState(null)
+
+    let count = -1
 
     useEffect(() => { // runs when component loads, unloads, or is updated .. file is always updated when firebase returns progress
         //references
         const storRef = ref(projectStorage, file.name) //reference address where file is stored
         const uploadTask = uploadBytesResumable(storRef, file)
 
-        uploadTask.on('state_changed', (snapshot) => {  
-            setProgress((snapshot.bytesTransferred / snapshot.totalBytes) * 100)
+        uploadTask.on('state_changed', (snapshot) => {   
+            count++
+            setProgress(count)
         }, (err) => { //second function catches error
             setError(err)
         },  async () => { //third function passes when upload is complete
