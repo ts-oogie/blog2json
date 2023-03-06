@@ -1,17 +1,30 @@
 import React from 'react'
-import {useEffect} from 'react'
-import useStorage from '../hooks/useStorage'
-import LoadingStatus from '../hooks/loadStatus'
+import {useEffect, useState} from 'react'
+import useStorage from '../hooks/useStorage' 
 
 const ProgressBar = ({file, setFile}) => {
 
     const {url, progress} = useStorage(file) 
 
-    let loadStatus = LoadingStatus(progress)
+    const [status, setStatus] = useState('+') 
 
-    const btnStyle = {
-        height: "50px",
-        width: "100px" 
+    const loadStatus = ( ) => {
+        let count = 1
+        let plus = '+' 
+         
+        setInterval(() => {
+            count++
+            if(count < 6){
+                plus = plus + '+'
+                setStatus(plus) 
+            }
+            else{
+                count = 1
+                plus = '+'
+                setStatus(plus)
+            }
+        }, 200)  
+        
     }
 
     const btnLoading = () => {
@@ -21,14 +34,15 @@ const ProgressBar = ({file, setFile}) => {
     }
 
     useEffect(() => {
+        loadStatus()
         if(url){
             setFile(null)// setting file to null will result in the progress button to be removed
         } 
-    }, [url, setFile])
+    }, [url, progress, setFile])
 
     return (
         //if progress < 100, then cycle button
-        <div className="progressBar">{loadStatus}</div>
+        <div className="progressBar">{status}</div>
     )
     
 }
