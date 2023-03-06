@@ -11,21 +11,19 @@ const useStorage = (file) => {
         //references
         const storRef = ref(projectStorage, file.name) //reference address where file is stored
         const uploadTask = uploadBytesResumable(storRef, file)
-        
 
-        uploadTask.on('state_changed', (snapshot) => { 
-            console.log("State changed")
-            //setProgress((snapshot.bytesTransferred / snapshot.totalBytes) * 100)
-        }, (err) => {
+        uploadTask.on('state_changed', (snapshot) => {  
+            setProgress((snapshot.bytesTransferred / snapshot.totalBytes) * 100)
+        }, (err) => { //second function catches error
             setError(err)
-        },  () => {
-            getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+        },  async () => { //third function passes when upload is complete
+            await getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
                 setUrl(downloadURL)
                 console.log("URL = " + downloadURL)
               });
         })  
             
-        }) 
+        }, [file]) //[file] is the dependency. everytime dependency changes, this useEffect is fired
 
     return {progress, url, error}
 

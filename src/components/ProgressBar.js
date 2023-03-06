@@ -3,13 +3,13 @@ import useStorage from '../hooks/useStorage'
 
 const ProgressBar = ({file, setFile}) => {
 
-    const {url, progress} = useStorage(file)
-  
+    const {url, progress} = useStorage(file) 
 
     return (
+        //if progress < 100, then cycle button
         <div className="progressBar">{progress}</div>
     )
-
+    
 }
 
 export default ProgressBar
