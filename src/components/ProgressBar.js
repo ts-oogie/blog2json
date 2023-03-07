@@ -2,7 +2,7 @@ import React from 'react'
 import {useEffect, useState} from 'react'
 import useStorage from '../hooks/useStorage' 
 
-const ProgressBar = ({file}) => {
+const ProgressBar = ({file, setUrl}) => {
 
     const {url, progress, error} = useStorage(file) 
 
@@ -17,14 +17,15 @@ const ProgressBar = ({file}) => {
          }
     }
 
-    const alertMe = () => {
-        console.log("clicked")
+    const saveURL = () => {
+        console.log("url : " + url)
+        setUrl(url)
     }
 
     useEffect(() => {    
         if(progress){
             //setStatus("+")
-            setPlus(progress%6)
+            setPlus(progress%6)//modulus
         }
         if(url){
             setStatus("Add") 
@@ -36,7 +37,7 @@ const ProgressBar = ({file}) => {
 
     return (
         //if progress < 100, then cycle button
-        <div className="progressBar" onClick={alertMe}><h2>{status}</h2></div>
+        <div className="progressBar" onClick={saveURL}><h2>{status}</h2></div>
     )
     
 }

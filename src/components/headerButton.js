@@ -48,15 +48,15 @@ HeaderButton.defaultProps = {
     }
 }
 
-const MediaButton = ({mType, mediaType, setMediaType}) => {
+const MediaButton = ({mType, size, setSize}) => {
 
     let cssDivWrapper = MediaButton.defaultProps.unSelected 
   
-    if(mediaType == "" || mediaType != mType){
+    if(size == "" || size != mType){
         //then the cssDivWrapper should be HeaderButton.defaultProps
         cssDivWrapper = MediaButton.defaultProps.unSelected 
     }
-    else if(mediaType == mType){ 
+    else if(size == mType){ 
         cssDivWrapper =  MediaButton.defaultProps.selected  
     } 
 
@@ -66,8 +66,8 @@ const MediaButton = ({mType, mediaType, setMediaType}) => {
 
     return(
         <div style={cssDivWrapper} 
-            onClick={() => {setMediaType(mType)}} 
-            onMouseEnter={() => {setMediaType(mType)}}
+            onClick={() => {setSize(mType)}} 
+            onMouseEnter={() => {setSize(mType)}}
         >
             <h2 style={cssTBH}>{mType}</h2>
         </div>
@@ -76,7 +76,7 @@ const MediaButton = ({mType, mediaType, setMediaType}) => {
 
 MediaButton.defaultProps = {
     unSelected : {
-        width: "40px",
+        width: "60px",
         height: "30px", 
         margin: "0 auto",
         border: "solid white 1px",
@@ -85,7 +85,7 @@ MediaButton.defaultProps = {
         cursor: 'none' 
     },
     selected : {
-        width: "40px",
+        width: "60px",
         height: "30px", 
         margin: "0 auto",
         border: "solid black 1px",

@@ -37,7 +37,7 @@ const Htype = ({headerType, setHeaderType}) => {
     )
 }
 
-const Mtype = ({mediaType, setMediaType}) => { 
+const Mtype = ({size, setSize}) => { 
 
     const cssTB = {
         display: "flex",
@@ -58,19 +58,18 @@ const Mtype = ({mediaType, setMediaType}) => {
     return ( 
         <>
         <h2>Specify a width : </h2><br/>
-        <header className="typeBar" style={cssTB}>
-            
+        <header className="typeBar" style={cssTB}> 
             <div className="tbButtonContainer">
-                <MediaButton mType={"25"} mediaType={mediaType} setMediaType={setMediaType}/>
+                <MediaButton mType={"25%"} size={size} setSize={setSize}/>
             </div>
             <div className="tbButtonContainer">
-                <MediaButton mType={"50"} mediaType={mediaType} setMediaType={setMediaType}/>
+                <MediaButton mType={"50%"}  size={size} setSize={setSize}/>
             </div>
             <div className="tbButtonContainer">
-                <MediaButton mType={"75"} mediaType={mediaType} setMediaType={setMediaType}/>
+                <MediaButton mType={"75%"}  size={size} setSize={setSize}/>
             </div>
             <div className="tbButtonContainer">
-                <MediaButton mType={"100"} mediaType={mediaType}  setMediaType={setMediaType}/>
+                <MediaButton mType={"100%"}  size={size} setSize={setSize}/>
             </div>
         </header> 
         </>

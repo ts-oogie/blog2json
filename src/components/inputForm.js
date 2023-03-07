@@ -4,7 +4,7 @@ import { Htype, Mtype} from './typeBar'
 import { projectStorage, projectFirestore} from '../firebase/config.js'
 import ProgressBar from './ProgressBar'
 //InputHeading
-const InputHeading = ({winWidth, setName, items, setItems, count, setCount, defaultName}) =>{ 
+const InputHeading = ({winWidth, setName, items, setItems, count, setCount}) =>{ 
 
     let thisObj = {}
     let newItem = items
@@ -99,7 +99,7 @@ InputHeading.defaultProps = {
 }
 
 //InputParagraph
-const InputParagraph = ({winWidth, setName, items, setItems, count, setCount, defaultName}) => { 
+const InputParagraph = ({winWidth, setName, items, setItems, count, setCount}) => { 
 
 const cssPInput = {
     fontFamily: 'Share Tech Mono',
@@ -176,9 +176,8 @@ const InputMedia = ({winWidth, setName, items, setItems, count, setCount, defaul
     const [error, setError] = useState(null)
     const types = ['image/png', 'image/jpeg']
 
-    const [mediaType, setMediaType] = useState("")
-    const [url, setUrl] = useState("") 
-    
+    const [size, setSize] = useState("")
+    const [url, setUrl] = useState("")  
 
     let thisObj = {}
     let newItem = items
@@ -217,7 +216,7 @@ const InputMedia = ({winWidth, setName, items, setItems, count, setCount, defaul
 
     return( 
         <div className="inputMedia">
-            <Mtype mediaType={mediaType} setMediaType={setMediaType} />
+            <Mtype size={size} setSize={setSize} />
             <form>  
                 <input
                     type="file" 
@@ -227,7 +226,7 @@ const InputMedia = ({winWidth, setName, items, setItems, count, setCount, defaul
                 />
                 <div className="errorMsg">
                     {error && <div className="errorMsg">{error}</div>} 
-                    {file && <ProgressBar file={file}  />}
+                    {file && <ProgressBar file={file} setUrl={setUrl} setItems={setItems} />}
                 </div>
             </form> 
         </div>
