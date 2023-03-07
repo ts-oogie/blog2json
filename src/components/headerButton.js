@@ -14,11 +14,14 @@ const HeaderButton = ({hType, headerType, setHeaderType}) => {
     } 
 
     const cssTBH = {
-        marginTop: "0px"
+        marginTop: "2px"
     } 
 
     return(
-        <div style={cssDivWrapper} onClick={() => {setHeaderType(hType)}} >
+        <div style={cssDivWrapper} 
+            onClick={() => {setHeaderType(hType)}} 
+            onMouseEnter={() => {setHeaderType(hType)}}
+        >
             <h2 style={cssTBH}>{hType}</h2>
         </div>
     ) 
@@ -32,7 +35,7 @@ HeaderButton.defaultProps = {
         border: "solid white 1px",
         color: "white", 
         backgroundColor: "black",
-        borderRadius: "20px" 
+        cursor: 'none' 
     },
     selected : {
         width: "40px",
@@ -41,7 +44,7 @@ HeaderButton.defaultProps = {
         border: "solid black 1px",
         color: "black", 
         backgroundColor: "white",
-        borderRadius: "20px" 
+        cursor: 'pointer'
     }
 }
 
