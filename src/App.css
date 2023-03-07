@@ -107,6 +107,18 @@ h4 {
   top: 90px;  
  }
 
+ .inputMedia {
+  margin-top : 20px;
+  padding-top : 20px;
+  min-height: 275px;
+ }
+
+ .inputMedia h2{
+  margin-top : 20px;
+ }
+
+
+
  .form-image {
   margin-top: 25px;
  }
@@ -139,6 +151,7 @@ h4 {
   width : 25%;
   height : 40px; 
   margin-bottom: 20px;
+  float: clear
 }
 
 .progressBar {
@@ -166,7 +179,8 @@ h4 {
   font-size: 1.55rem;
 }
 
-
+ 
+ 
 
 
  

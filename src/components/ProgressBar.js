@@ -4,7 +4,7 @@ import useStorage from '../hooks/useStorage'
 
 const ProgressBar = ({file}) => {
 
-    const {url, progress} = useStorage(file) 
+    const {url, progress, error} = useStorage(file) 
 
     const [status, setStatus] = useState('')
     
@@ -26,11 +26,13 @@ const ProgressBar = ({file}) => {
             //setStatus("+")
             setPlus(progress%6)
         }
-         
         if(url){
             setStatus("Add") 
         }
-    }, [progress, url])
+        if(error){
+            setStatus("Error") 
+        }
+    }, [progress, url, error])
 
     return (
         //if progress < 100, then cycle button

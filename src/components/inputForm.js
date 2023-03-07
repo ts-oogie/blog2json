@@ -1,6 +1,6 @@
 import React from 'react'
 import { useState, useEffect } from 'react'
-import Htype from './typeBar'
+import { Htype, Mtype} from './typeBar'
 import { projectStorage, projectFirestore} from '../firebase/config.js'
 import ProgressBar from './ProgressBar'
 //InputHeading
@@ -12,6 +12,7 @@ const InputHeading = ({winWidth, setName, items, setItems, count, setCount, defa
 
     const [heading, setHeading] = useState("")  
     const [headerType, setHeaderType] = useState(InputHeading.defaultProps.headerStyle) 
+    const [btnState, setBtnState] = useState("none")
 
     useEffect(() => {
         setName("Enter a Heading")
@@ -33,6 +34,19 @@ const InputHeading = ({winWidth, setName, items, setItems, count, setCount, defa
         fontWeight: "bold"
     }
 
+    let btnStyle = {
+        cursor: btnState
+    }
+
+    const togglePointer = (toggle) => {
+        if(toggle == 'on'){
+            btnStyle.cursor = 'auto'
+        }
+        else{
+            btnStyle.cursor = 'none'
+        }
+    }
+
     return( 
         <div className="inputHeading">
             <Htype headerType={headerType} setHeaderType={setHeaderType} />
@@ -44,26 +58,37 @@ const InputHeading = ({winWidth, setName, items, setItems, count, setCount, defa
                     value={heading} 
                     onChange={(e) => setHeading(e.target.value)}
                 />
-                <div className="submitBtn" onClick={(e)=>{
-                    e.preventDefault() 
+                <div className="submitBtn" 
+                    style={btnStyle}
+                    onClick={ (e)=>{
+                        e.preventDefault()  
 
-                    if(heading == ""){
-                        alert("Please enter a title")
-                    }
-                    
-                    else{
-                        newCount = count + 1 
-                        setCount(newCount)
+                        if(heading == ""){
+                            alert("Please enter a title")
+                        }
+                        
+                        else{
+                            newCount = count + 1 
+                            setCount(newCount)
 
-                        thisObj.id = newCount
-                        thisObj.type = "heading"
-                        thisObj.text = heading
-                        thisObj.size = headerType 
-                        newItem.push(thisObj) 
-                        setItems(newItem)
-                    }
+                            thisObj.id = newCount
+                            thisObj.type = "heading"
+                            thisObj.text = heading
+                            thisObj.size = headerType 
+                            newItem.push(thisObj) 
+                            setItems(newItem)
+                        }
+                    }}
+                    onMouseEnter={ ()=>{
+                        setBtnState("pointer")
+                    }}
 
-                }}><h2>Add</h2></div>
+                    onMouseLeave={ ()=>{
+                        setBtnState("none")
+                    }}
+                >
+                <h2>Add</h2>
+                </div>
             </label> 
         </div>
     )
@@ -129,8 +154,7 @@ return(
                     
                     else{
                         newCount = count + 1 
-                        setCount(newCount)
-
+                        setCount(newCount) 
                         thisObj.id = newCount
                         thisObj.type = "paragraph"
                         thisObj.text = paragraph
@@ -151,6 +175,14 @@ const InputMedia = ({winWidth, setName, items, setItems, count, setCount, defaul
     const [file, setFile] = useState(null) 
     const [error, setError] = useState(null)
     const types = ['image/png', 'image/jpeg']
+
+    const [mediaType, setMediaType] = useState("")
+    const [url, setUrl] = useState("") 
+    
+
+    let thisObj = {}
+    let newItem = items
+    let newCount 
 
     useEffect(() => {
         setName("Upload an Image/Video")
@@ -184,8 +216,9 @@ const InputMedia = ({winWidth, setName, items, setItems, count, setCount, defaul
     }
 
     return( 
-        <div className="inputHeading">
-            <form> 
+        <div className="inputMedia">
+            <Mtype mediaType={mediaType} setMediaType={setMediaType} />
+            <form>  
                 <input
                     type="file" 
                     style={headingStyle}
@@ -193,18 +226,13 @@ const InputMedia = ({winWidth, setName, items, setItems, count, setCount, defaul
                     onChange={changeHandle} 
                 />
                 <div className="errorMsg">
-                    {error && <div className="errorMsg">{error}</div>}
-                     
+                    {error && <div className="errorMsg">{error}</div>} 
                     {file && <ProgressBar file={file}  />}
                 </div>
             </form> 
         </div>
     )
-}   
-
-//line 196 : if there is an error, then we show the div with errormessage
-//line 197 : if there is a file, then we show the file name
-//line 198 : if there is a file, then we show the progressbar
+}    
 
 export {InputParagraph, InputHeading, InputMedia}
   
