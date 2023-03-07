@@ -22,31 +22,12 @@ const ProgressBar = ({file}) => {
     }
 
     useEffect(() => {    
-        if(progress==1){
+        if(progress){
             //setStatus("+")
-            setPlus(progress)
+            setPlus(progress%6)
         }
-        else if(progress == 2){
-            //setStatus("++") 
-            setPlus(progress)
-        }
-        else if(progress == 3){
-            //setStatus("+++") 
-            setPlus(progress)
-        }
-        else if(progress == 4){
-            //setStatus("++++") 
-            setPlus(progress)
-        }
-        else if(progress == 5){
-            //setStatus("+++++") 
-            setPlus(progress)
-        }
-        else if(progress == 6){
-            //setStatus("++++++") 
-            setPlus(progress)
-        } 
-        else if(url){
+         
+        if(url){
             setStatus("Add") 
         }
     }, [progress, url])
