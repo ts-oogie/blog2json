@@ -43,15 +43,14 @@ const InputScrn = ({
         })()
     }
 
-    if ( hoverState == ""){ 
-         setName(defaultName.title)
+    if (hoverState == ""){ 
+        setName(defaultName.title)
         return(   
             <></>
         )
     }
 
     else if (hoverState == "heading"){ 
- 
         return(   
             <header className="scrnInput" style={headerStyle} >
                 <InputHeading 
@@ -84,12 +83,13 @@ const InputScrn = ({
     else {
         return(   
             <header 
-                className="scrnInput" 
-                style={headerStyle}>
+                className="scrnInput" style={headerStyle}>
                 <InputMedia 
                     winWidth={ winWidth} 
                     setName={ setName}  
                     count={count} 
+                    items={items}
+                    setItems={setItems}
                     setCount={setCount} />
             </header>
         )

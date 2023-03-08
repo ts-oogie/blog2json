@@ -170,25 +170,25 @@ return(
 
 }
 
-const InputMedia = ({winWidth, setName, items, setItems, count, setCount, defaultName}) =>{ 
+const InputMedia = ({winWidth, setName, items, setItems, count, setCount}) =>{ 
 
     const [file, setFile] = useState(null) 
     const [error, setError] = useState(null)
     const types = ['image/png', 'image/jpeg']
 
-    const [size, setSize] = useState("")
-    const [url, setUrl] = useState("")  
+    const [size, setSize] = useState("100%") 
 
-    let thisObj = {}
+    /*let thisObj = {} // id, size, type, url
     let newItem = items
-    let newCount 
+    let newCount  */
 
     useEffect(() => {
-        setName("Upload an Image/Video")
+        setName("Upload an Image/Video") 
     })
 
     const changeHandle = (e) => { 
         let fileSelected = e.target.files[0]
+        console.log(fileSelected)
         if (fileSelected && types.includes(fileSelected.type)){
             setError(null) 
             setFile(fileSelected) 
@@ -226,7 +226,13 @@ const InputMedia = ({winWidth, setName, items, setItems, count, setCount, defaul
                 />
                 <div className="errorMsg">
                     {error && <div className="errorMsg">{error}</div>} 
-                    {file && <ProgressBar file={file} setUrl={setUrl} setItems={setItems} />}
+                    {file && <ProgressBar 
+                                file={file}  
+                                size={size}
+                                count={count}
+                                setCount={setCount}
+                                items={items}
+                                setItems={setItems} />}
                 </div>
             </form> 
         </div>

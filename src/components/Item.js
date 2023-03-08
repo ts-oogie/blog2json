@@ -7,12 +7,13 @@ const Item = ({id, text, type, size, count}) => {
         marginTop: '20px',
         marginBottom: '10px',
         borderRadius: '20px',
-        width: "60%",
+        width: "80%",
         position: "relative",
         display: "inline-block",
         textAlign: "center",
         paddingRight: "20px",
-        paddingLeft: "20px"
+        paddingLeft: "20px",
+        border: "black solid 3px"
     }
 
     return(
