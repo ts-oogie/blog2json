@@ -175,7 +175,8 @@ const InputMedia = ({winWidth, setName, items, setItems, count, setCount}) =>{
 
     const [file, setFile] = useState(null) 
     const [error, setError] = useState(null)
-    const types = ['image/png', 'image/jpeg'] 
+    const types = ['image/png', 'image/jpeg']
+
     const [size, setSize] = useState("100%")  
 
     useEffect(() => {
@@ -192,15 +193,31 @@ const InputMedia = ({winWidth, setName, items, setItems, count, setCount}) =>{
             setFile(null)
             setError("Please select an image type (.png or .jpg)")
         }
-    } 
+    }
+
+    const headingStyle = { 
+        width : (()=>{
+            if(winWidth <= 760 && winWidth >= 600){ 
+                return "300px"
+            }
+            else if(winWidth < 600){
+                return "150px"
+            }
+        })(),
+        height: "35px", 
+        clear: "left",
+        marginRight : "-50px",
+        fontSize: "25px",
+        fontFamily: "Share Tech Mono"   
+    }
 
     return( 
-        <div className="inputMedia" style={inputMediaStyle}>
+        <div className="inputMedia">
             <Mtype size={size} setSize={setSize} />
             <form>  
                 <input
                     type="file" 
-                    style={inputStyle}
+                    style={headingStyle}
                     className="form-image"
                     onChange={changeHandle} 
                 />
@@ -217,33 +234,6 @@ const InputMedia = ({winWidth, setName, items, setItems, count, setCount}) =>{
             </form> 
         </div>
     )
-
-    const inputStyle = { 
-        width : (()=>{
-            if(winWidth <= 760 && winWidth >= 600){ 
-                return "300px"
-            }
-            else if(winWidth < 600){
-                return "150px"
-            }
-        })(),
-        height: "35px", 
-        clear: "left",
-        marginRight : "-50px",
-        fontSize: "25px",
-        fontFamily: "Share Tech Mono"   
-    }
-
-    const inputMediaStyle = {
-        width: (()=>{
-            if(winWidth < 400){
-                alert("100%")
-                return "100%"
-
-            }
-        })()
-    }
-
 }    
 
 export {InputParagraph, InputHeading, InputMedia}

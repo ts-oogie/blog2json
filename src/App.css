@@ -215,8 +215,7 @@ h4 {
     font-size : 1.55rem;
   }
   .scrnInput{
-    width: 100%;
-    background-color: red;
+    width: 100%; 
   }
   .titleImageText {
     height : 35px;

@@ -1,10 +1,12 @@
 import React from 'react'
 import Item from './Item'
 import { useState } from 'react'
+import {db, collection, addDoc} from '../firebase/config'
 
 const PrintItems = ({items, count}) => {
     
-    const [btnState, setBtnState] = useState("none");
+    const [btnState, setBtnState] = useState("none")
+    const blogRef = collection(db, 'blog')
 
     const cssPrintItems = {
         backgroundColor : '#A5A5A5',
@@ -20,19 +22,33 @@ const PrintItems = ({items, count}) => {
     let btnStyle = {
         cursor: btnState,
         width: '100px'
+    } 
+
+    const addItems = () => {
+        items.map((item, index) => (
+            addDoc(blogRef, {
+                id: item.id,
+                size: item.size,
+                type: item.type,
+                text: item.text 
+            }).then(()=>{
+                console.log(item)
+            })
+        ))
+       
     }
-    
 
     return(
         <div style={cssPrintItems}>
-            {items.map((item) => (
-                <Item id={item.id} text={item.text} type={item.type} size={item.size} count={count} />
+            {items.map((item, index) => (
+                <Item key={index} id={item.id} text={item.text} type={item.type} size={item.size} count={count} />
             ))}
             <div className="submitBtn" 
                     style={btnStyle}
 
                     onClick={ (e)=>{
                         e.preventDefault()   
+                        addItems()
                     }}
 
                     onMouseEnter={ ()=>{
