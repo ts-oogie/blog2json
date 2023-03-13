@@ -1,8 +1,10 @@
 import React from 'react'
 import Item from './Item'
+import { useState } from 'react'
 
 const PrintItems = ({items, count}) => {
-    console.log(items)
+    
+    const [btnState, setBtnState] = useState("none");
 
     const cssPrintItems = {
         backgroundColor : '#A5A5A5',
@@ -15,11 +17,34 @@ const PrintItems = ({items, count}) => {
         borderBottom: "4px solid black"
     }
 
+    let btnStyle = {
+        cursor: btnState,
+        width: '100px'
+    }
+    
+
     return(
         <div style={cssPrintItems}>
             {items.map((item) => (
                 <Item id={item.id} text={item.text} type={item.type} size={item.size} count={count} />
             ))}
+            <div className="submitBtn" 
+                    style={btnStyle}
+
+                    onClick={ (e)=>{
+                        e.preventDefault()   
+                    }}
+
+                    onMouseEnter={ ()=>{
+                        setBtnState("pointer")
+                    }}
+
+                    onMouseLeave={ ()=>{
+                        setBtnState("none")
+                    }}
+                >
+                <h2>Submit</h2>
+                </div>
         </div>
     )
 }

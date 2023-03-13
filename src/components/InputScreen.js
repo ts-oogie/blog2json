@@ -40,7 +40,9 @@ const InputScrn = ({
                     return "150px"
                 } 
             }
-        })()
+        })(),
+        width : "100%"
+    
     }
 
     if (hoverState == ""){ 

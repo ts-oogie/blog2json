@@ -28,7 +28,7 @@ function App() {
   let winWidth = window.innerWidth  
 
   return (
-    <div className="App">
+    <div className="App" style={appStyle}>
       <Header title={name} />
       <TitleImageText setHoverState={setHoverState}/>
       <InputScrn 
@@ -49,6 +49,10 @@ function App() {
 Header.defaultProps = {
   title: "BLOG2JSON",
   errBlankInput: "Please enter a title"
+}
+
+const appStyle = {
+  width: "100%" 
 }
 
 export default App;

@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react'
 import { Htype, Mtype} from './typeBar'
 import { projectStorage, projectFirestore} from '../firebase/config.js'
 import ProgressBar from './ProgressBar'
+
 //InputHeading
 const InputHeading = ({winWidth, setName, items, setItems, count, setCount}) =>{ 
 
@@ -36,7 +37,7 @@ const InputHeading = ({winWidth, setName, items, setItems, count, setCount}) =>{
 
     let btnStyle = {
         cursor: btnState
-    }
+    } 
 
     const togglePointer = (toggle) => {
         if(toggle == 'on'){
@@ -174,13 +175,8 @@ const InputMedia = ({winWidth, setName, items, setItems, count, setCount}) =>{
 
     const [file, setFile] = useState(null) 
     const [error, setError] = useState(null)
-    const types = ['image/png', 'image/jpeg']
-
-    const [size, setSize] = useState("100%") 
-
-    /*let thisObj = {} // id, size, type, url
-    let newItem = items
-    let newCount  */
+    const types = ['image/png', 'image/jpeg'] 
+    const [size, setSize] = useState("100%")  
 
     useEffect(() => {
         setName("Upload an Image/Video") 
@@ -196,31 +192,15 @@ const InputMedia = ({winWidth, setName, items, setItems, count, setCount}) =>{
             setFile(null)
             setError("Please select an image type (.png or .jpg)")
         }
-    }
-
-    const headingStyle = { 
-        width : (()=>{
-            if(winWidth <= 760 && winWidth >= 600){ 
-                return "300px"
-            }
-            else if(winWidth < 600){
-                return "150px"
-            }
-        })(),
-        height: "35px", 
-        clear: "left",
-        marginRight : "-50px",
-        fontSize: "25px",
-        fontFamily: "Share Tech Mono"   
-    }
+    } 
 
     return( 
-        <div className="inputMedia">
+        <div className="inputMedia" style={inputMediaStyle}>
             <Mtype size={size} setSize={setSize} />
             <form>  
                 <input
                     type="file" 
-                    style={headingStyle}
+                    style={inputStyle}
                     className="form-image"
                     onChange={changeHandle} 
                 />
@@ -237,6 +217,33 @@ const InputMedia = ({winWidth, setName, items, setItems, count, setCount}) =>{
             </form> 
         </div>
     )
+
+    const inputStyle = { 
+        width : (()=>{
+            if(winWidth <= 760 && winWidth >= 600){ 
+                return "300px"
+            }
+            else if(winWidth < 600){
+                return "150px"
+            }
+        })(),
+        height: "35px", 
+        clear: "left",
+        marginRight : "-50px",
+        fontSize: "25px",
+        fontFamily: "Share Tech Mono"   
+    }
+
+    const inputMediaStyle = {
+        width: (()=>{
+            if(winWidth < 400){
+                alert("100%")
+                return "100%"
+
+            }
+        })()
+    }
+
 }    
 
 export {InputParagraph, InputHeading, InputMedia}
