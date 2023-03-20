@@ -28,7 +28,7 @@ const ProgressBar = ({file, count, setCount, size, items, setItems}) => {
         thisObj.id = newCount
         thisObj.size = size
         thisObj.type = 'img'
-        thisObj.url = url
+        thisObj.text = url
         newItem.push(thisObj)
         setItems(newItem) 
 

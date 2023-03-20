@@ -10,7 +10,7 @@ const Htype = ({headerType, setHeaderType}) => {
         flexDirection: "row",
         flexWrap: "nowrap",
         fontFamily: "Dosis",
-        marginTop: "-30px"
+        marginTop: "-20px"
     }
 
     const cssTBDiv = {

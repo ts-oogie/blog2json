@@ -105,6 +105,12 @@ h4 {
  .inputHeading { 
   display: inline-block;
   position: relative;
+  top: 30px;  
+ }
+
+ .inputParagraph {
+  display: inline-block;
+  position: relative;
   top: 90px;  
  }
 

@@ -50,6 +50,7 @@ const InputHeading = ({winWidth, setName, items, setItems, count, setCount}) =>{
 
     return( 
         <div className="inputHeading">
+            <h2>Specify a heading : </h2><br/>
             <Htype headerType={headerType} setHeaderType={setHeaderType} />
             <label> 
                 <input
@@ -133,7 +134,7 @@ const textAreaStyle = {
 }
 
 return( 
-    <div className="inputHeading">
+    <div className="inputParagraph"> 
         <label>  
             <textarea 
                 rows="10" 
@@ -185,10 +186,12 @@ const InputMedia = ({winWidth, setName, items, setItems, count, setCount}) =>{
 
     const changeHandle = (e) => { 
         let fileSelected = e.target.files[0]
+        console.log("filed selected : ")
         console.log(fileSelected)
         if (fileSelected && types.includes(fileSelected.type)){
             setError(null) 
             setFile(fileSelected) 
+            setTimeout(()=>{console.log("file : " + file)}, 3000)
         } else{
             setFile(null)
             setError("Please select an image type (.png or .jpg)")
