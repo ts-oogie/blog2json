@@ -22,29 +22,33 @@ const HeaderButton = ({hType, headerType, setHeaderType}) => {
             onClick={() => {setHeaderType(hType)}} 
             onMouseEnter={() => {setHeaderType(hType)}}
         >
-            <h2 style={cssTBH}>{hType}</h2>
+            <h3 style={cssTBH}>{hType}</h3>
         </div>
     ) 
 }
 
 HeaderButton.defaultProps = {
     unSelected : {
-        width: "40px",
+        width: "60px",
         height: "30px", 
         margin: "0 auto",
         border: "solid white 1px",
         color: "white", 
         backgroundColor: "black",
-        cursor: 'none' 
+        cursor: 'none',
+        borderRadius : '20px',
+        paddingTop : "5px" 
     },
     selected : {
-        width: "40px",
+        width: "60px",
         height: "30px", 
         margin: "0 auto",
         border: "solid black 1px",
         color: "black", 
         backgroundColor: "white",
-        cursor: 'pointer'
+        cursor: 'pointer',
+        borderRadius : '20px',
+        paddingTop : "5px" 
     }
 }
 
@@ -69,7 +73,7 @@ const MediaButton = ({mType, size, setSize}) => {
             onClick={() => {setSize(mType)}} 
             onMouseEnter={() => {setSize(mType)}}
         >
-            <h2 style={cssTBH}>{mType}</h2>
+            <h3 style={cssTBH}>{mType}</h3>
         </div>
     ) 
 }
@@ -82,7 +86,9 @@ MediaButton.defaultProps = {
         border: "solid white 1px",
         color: "white", 
         backgroundColor: "black",
-        cursor: 'none' 
+        cursor: 'none',
+        borderRadius: "20px",
+        paddingTop : "5px" 
     },
     selected : {
         width: "60px",
@@ -91,7 +97,9 @@ MediaButton.defaultProps = {
         border: "solid black 1px",
         color: "black", 
         backgroundColor: "white",
-        cursor: 'pointer'
+        cursor: 'pointer',
+        borderRadius: "20px",
+        paddingTop : "5px"
     }
 }
 

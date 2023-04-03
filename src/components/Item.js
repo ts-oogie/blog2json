@@ -18,10 +18,10 @@ const Item = ({id, text, type, size, count}) => {
 
     return(
         <div style={cssItems} key={id}>
-            <h2>{id == 0 ? "[" : ""}{'{"id" : ' +  '' + id + ','}</h2>
-            <h2 >{'"type" : ' + '"' + type + '",'}</h2>
-            <h2 >{'"text" : ' + '"' + text + '",'}</h2>
-            <h2 >{'"size" : ' + '"' + size + '"}'}{(id == 0 && count == 0) || (id > 0 && (id == count)) ? "]" : ","} </h2>
+            <h3>{id == 0 ? "[" : ""}{'{"id" : ' +  '' + id + ','}</h3>
+            <h3 >{'"type" : ' + '"' + type + '",'}</h3>
+            <h3 >{'"text" : ' + '"' + text + '",'}</h3>
+            <h3 >{'"size" : ' + '"' + size + '"}'}{(id == 0 && count == 0) || (id > 0 && (id == count)) ? "]" : ","} </h3>
         </div>
     )
 }

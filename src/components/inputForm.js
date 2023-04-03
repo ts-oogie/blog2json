@@ -1,9 +1,119 @@
 import React from 'react'
 import { useState, useEffect } from 'react'
 import { Htype, Mtype} from './typeBar'
-import { projectStorage, projectFirestore} from '../firebase/config.js'
-import ProgressBar from './ProgressBar'
+//import { projectStorage, projectFirestore} from '../firebase/config.js'
+import ProgressBar from './ProgressBar' 
 
+const InputCode = ({winWidth, setName, items, setItems, count, setCount}) =>{ 
+
+    let thisObj = {}
+    let newItem = items
+    let newCount
+
+    const textAreaStyle = {
+        cols: (()=>{
+            if(winWidth > 760){
+                return "48"
+            }
+            else if(winWidth <= 760 && winWidth >= 600){  
+                return "40"
+            }
+            else if(winWidth < 600){
+                return "35"
+            }
+        })()
+    }
+
+    const cssPInput = {
+        fontFamily: 'Share Tech Mono',
+        fontSize: '1.25rem'
+    }
+
+    const [code, setCode] = useState("")   
+    const [btnState, setBtnState] = useState("none")
+
+    useEffect(() => {
+        setName("Enter Code Insert")
+    })
+
+    const headingStyle = { 
+        width : (()=>{
+            if(winWidth <= 760 && winWidth >= 600){ 
+                return "300px"
+            }
+            else if(winWidth < 600){
+                return "150px"
+            }
+        })(),
+        height: "20px", 
+        clear: "right",
+        fontSize: "20px",
+        fontFamily: "Share Tech Mono",
+        fontWeight: "bold"
+    }
+
+    let btnStyle = {
+        cursor: btnState
+    } 
+
+    const togglePointer = (toggle) => {
+        if(toggle == 'on'){
+            btnStyle.cursor = 'auto'
+        }
+        else{
+            btnStyle.cursor = 'none'
+        }
+    }
+
+    return( 
+        <div className="inputHeading">  
+            <label> 
+                <textarea 
+                    rows="5" 
+                    cols={textAreaStyle.cols} 
+                    name="code" 
+                    type="text"  
+                    style={cssPInput}
+                    value={code} 
+                    onChange={(e) => setCode(e.target.value)}
+                >
+                </textarea>
+                <div className="submitBtn" 
+                    style={btnStyle}
+                    onClick={ (e)=>{
+                        e.preventDefault()  
+
+                        if(code == ""){
+                            alert("Please enter code snippet")
+                        }
+                        
+                        else{
+                            newCount = count + 1 
+                            setCount(newCount)
+
+                            thisObj.id = newCount
+                            thisObj.type = "code"
+                            thisObj.text = code
+                            thisObj.size = "" 
+                            newItem.push(thisObj) 
+                            setItems(newItem)
+                        }
+                    }}
+                    onMouseEnter={ ()=>{
+                        setBtnState("pointer")
+                    }}
+
+                    onMouseLeave={ ()=>{
+                        setBtnState("none")
+                    }}
+                >
+                <h4>Add</h4>
+                </div>
+            </label> 
+        </div>
+    )
+}   
+ 
 //InputHeading
 const InputHeading = ({winWidth, setName, items, setItems, count, setCount}) =>{ 
 
@@ -28,9 +138,9 @@ const InputHeading = ({winWidth, setName, items, setItems, count, setCount}) =>{
                 return "150px"
             }
         })(),
-        height: "40px", 
+        height: "20px", 
         clear: "right",
-        fontSize: "30px",
+        fontSize: "20px",
         fontFamily: "Share Tech Mono",
         fontWeight: "bold"
     }
@@ -49,8 +159,7 @@ const InputHeading = ({winWidth, setName, items, setItems, count, setCount}) =>{
     }
 
     return( 
-        <div className="inputHeading">
-            <h2>Specify a heading : </h2><br/>
+        <div className="inputHeading">  
             <Htype headerType={headerType} setHeaderType={setHeaderType} />
             <label> 
                 <input
@@ -89,7 +198,7 @@ const InputHeading = ({winWidth, setName, items, setItems, count, setCount}) =>{
                         setBtnState("none")
                     }}
                 >
-                <h2>Add</h2>
+                <h4>Add</h4>
                 </div>
             </label> 
         </div>
@@ -105,7 +214,7 @@ const InputParagraph = ({winWidth, setName, items, setItems, count, setCount}) =
 
 const cssPInput = {
     fontFamily: 'Share Tech Mono',
-    fontSize: '1.5rem'
+    fontSize: '1.25rem'
 }
 
 let thisObj = {}
@@ -165,7 +274,7 @@ return(
                         setItems(newItem)
                     }
 
-                }}><h2>Add</h2></div>
+                }}><h4>Add</h4></div>
         </label> 
     </div>
 ) 
@@ -210,8 +319,9 @@ const InputMedia = ({winWidth, setName, items, setItems, count, setCount}) =>{
         height: "35px", 
         clear: "left",
         marginRight : "-50px",
-        fontSize: "25px",
-        fontFamily: "Share Tech Mono"   
+        fontSize: "18px",
+        fontFamily: "Share Tech Mono",
+        top: "30px" 
     }
 
     return( 
@@ -239,5 +349,5 @@ const InputMedia = ({winWidth, setName, items, setItems, count, setCount}) =>{
     )
 }    
 
-export {InputParagraph, InputHeading, InputMedia}
+export {InputParagraph, InputHeading, InputMedia, InputCode}
   

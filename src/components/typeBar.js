@@ -9,8 +9,8 @@ const Htype = ({headerType, setHeaderType}) => {
         display: "flex",
         flexDirection: "row",
         flexWrap: "nowrap",
-        fontFamily: "Dosis",
-        marginTop: "-20px"
+        fontFamily: "Dosis", 
+        top : "50px" 
     }
 
     const cssTBDiv = {
@@ -46,7 +46,8 @@ const Mtype = ({size, setSize}) => {
         fontFamily: "Dosis",
         marginTop: "-30px",
         width: "40%",
-        margin: "0 auto"
+        margin: "0 auto",
+        marginTop : "40px"
     }
 
     const cssTBDiv = {
@@ -56,8 +57,7 @@ const Mtype = ({size, setSize}) => {
     } 
 
     return ( 
-        <>
-        <h2>Specify a width : </h2><br/>
+        <> 
         <header className="typeBar" style={cssTB}> 
             <div className="tbButtonContainer">
                 <MediaButton mType={"25%"} size={size} setSize={setSize}/>

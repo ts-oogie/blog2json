@@ -59,7 +59,7 @@ const PrintItems = ({items, count}) => {
                         setBtnState("none")
                     }}
                 >
-                <h2>Submit</h2>
+                <h4>Submit</h4>
                 </div>
         </div>
     )

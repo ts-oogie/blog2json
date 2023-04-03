@@ -1,11 +1,11 @@
 import React from 'react'
 import { useEffect } from 'react'
-import {InputHeading, InputParagraph, InputMedia}  from './inputForm'
+import {InputHeading, InputParagraph, InputMedia, InputCode}  from './inputForm'
 
 const InputScrn = ({
         winWidth, 
         hoverState, 
-        setHoverState, 
+        //setHoverState, 
         defaultName,  
         setName, 
         items,
@@ -50,6 +50,22 @@ const InputScrn = ({
         )
     }
 
+    else if (hoverState == "code"){
+        return(   
+            <header className="scrnInput" style={headerStyle} >
+                <InputCode
+                    defaultName={defaultName}
+                    winWidth={winWidth} 
+                    setName={setName}  
+                    items={items}
+                    setItems={setItems}
+                    count={count} 
+                    setCount={setCount} 
+                />
+            </header>
+        )
+    }
+
     else if (hoverState == "heading"){ 
         return(   
             <header className="scrnInput" style={headerStyle} >
@@ -60,7 +76,8 @@ const InputScrn = ({
                     items={items}
                     setItems={setItems}
                     count={count} 
-                    setCount={setCount}/>
+                    setCount={setCount} 
+                />
             </header>
         )
     }
@@ -75,13 +92,14 @@ const InputScrn = ({
                     items={items}
                     setItems={setItems}
                     count={count} 
-                    setCount={setCount}/>
+                    setCount={setCount} 
+                />
             </header>
         )
     }
 
     else {
-        return(   
+        return (   
             <header 
                 className="scrnInput" style={headerStyle}>
                 <InputMedia 
