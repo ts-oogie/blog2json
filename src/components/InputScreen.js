@@ -4,8 +4,7 @@ import {InputHeading, InputParagraph, InputMedia, InputCode}  from './inputForm'
 
 const InputScrn = ({
         winWidth, 
-        hoverState, 
-        //setHoverState, 
+        hoverState,  
         defaultName,  
         setName, 
         items,
@@ -18,7 +17,7 @@ const InputScrn = ({
         minHeight: (()=>{
             if( winWidth > 768){ 
                 if( hoverState == "paragraph"){ 
-                    return "450px"
+                    return "400px"
                 }
                 else{
                     return "250px"

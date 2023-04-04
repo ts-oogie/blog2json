@@ -89,8 +89,7 @@ const InputCode = ({winWidth, setName, items, setItems, count, setCount}) =>{
                         
                         else{
                             newCount = count + 1 
-                            setCount(newCount)
-
+                            setCount(newCount) 
                             thisObj.id = newCount
                             thisObj.type = "code"
                             thisObj.text = code

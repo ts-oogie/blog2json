@@ -11,13 +11,13 @@ import './App.css';
 function App() { 
 
   const [count, setCount] = useState(0) 
-
+  const [edit, editCode] = useState("")
   const [items, setItems] = useState([  //the JS Obj
     {
         id: 0, 
-        type: "heading",
-        text: "Design",
-        size: "H1"
+        type: "_blank",
+        text: "_blank",
+        size: "_blank"
     } 
   ])
   
