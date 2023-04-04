@@ -5,7 +5,7 @@ import PropTypes from 'prop-types'
 
   return (
     <header className="navBar"> 
-      <h3 className="navTitle" style={{color: "black"}}>{props.title}</h3>  
+      <h2 className="navTitle" style={{color: "black"}}>{props.title}</h2>  
     </header> 
   )
 }
