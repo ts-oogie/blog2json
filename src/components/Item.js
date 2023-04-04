@@ -1,4 +1,6 @@
 import React from 'react'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faEdit, faTrashCan} from '@fortawesome/free-regular-svg-icons' 
 
 const Item = ({id, text, type, size, count}) => {
     
@@ -18,6 +20,8 @@ const Item = ({id, text, type, size, count}) => {
 
     return(
         <div style={cssItems} key={id}>
+            <FontAwesomeIcon className="faSize" icon={faEdit} />
+            <FontAwesomeIcon className="faSize" icon={faTrashCan} /> 
             <h3>{id == 0 ? "[" : ""}{'{"id" : ' +  '' + id + ','}</h3>
             <h3 >{'"type" : ' + '"' + type + '",'}</h3>
             <h3 >{'"text" : ' + '"' + text + '",'}</h3>
