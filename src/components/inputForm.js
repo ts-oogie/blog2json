@@ -1,8 +1,105 @@
 import React from 'react'
 import { useState, useEffect } from 'react'
 import { Htype, Mtype} from './typeBar'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+
+import {faFile} from '@fortawesome/free-regular-svg-icons'
 //import { projectStorage, projectFirestore} from '../firebase/config.js'
 import ProgressBar from './ProgressBar' 
+
+const InputFile = ({winWidth, setName, items, setItems, count, setCount}) =>{ 
+
+    let thisObj = {}
+    let newItem = items
+    let newCount 
+
+    const cssPInput = {
+        fontFamily: 'Share Tech Mono',
+        fontSize: '1.25rem'
+    }
+
+    const [code, setCode] = useState("")   
+    const [btnState, setBtnState] = useState("none")
+
+    useEffect(() => {
+        setName("Load Collection")
+    })
+
+    const headingStyle = { 
+        width : (()=>{
+            if(winWidth <= 760 && winWidth >= 600){ 
+                return "300px"
+            }
+            else if(winWidth < 600){
+                return "150px"
+            }
+        })(),
+        height: "20px", 
+        clear: "right",
+        fontSize: "20px",
+        fontFamily: "Share Tech Mono",
+        fontWeight: "bold"
+    }
+
+    const fileStyle = {
+        width: "55px",
+        height: "55px",
+        color: "white"
+    }
+
+    let btnStyle = {
+        cursor: btnState
+    } 
+
+    const togglePointer = (toggle) => {
+        if(toggle == 'on'){
+            btnStyle.cursor = 'auto'
+        }
+        else{
+            btnStyle.cursor = 'none'
+        }
+    }
+
+    return( 
+        <div className="inputHeading">  
+            <FontAwesomeIcon icon={faFile} style={fileStyle}/>
+            <h3>Blog</h3>
+            <label>  
+                <div className="submitBtn" 
+                    style={btnStyle}
+                    onClick={ (e)=>{
+                        e.preventDefault()  
+
+                        if(code == ""){
+                            alert("Please enter code snippet")
+                        }
+                        
+                        else{
+                            newCount = count + 1 
+                            setCount(newCount) 
+                            thisObj.id = newCount
+                            thisObj.type = "code"
+                            thisObj.text = code
+                            thisObj.size = "" 
+                            newItem.push(thisObj) 
+                            setItems(newItem)
+                        }
+                    }}
+                    onMouseEnter={ ()=>{
+                        setBtnState("pointer")
+                    }}
+
+                    onMouseLeave={ ()=>{
+                        setBtnState("none")
+                    }}
+                >
+                <h4>Add</h4>
+                </div>
+            </label> 
+        </div>
+    )
+}   
+
 
 const InputCode = ({winWidth, setName, items, setItems, count, setCount}) =>{ 
 
@@ -348,5 +445,5 @@ const InputMedia = ({winWidth, setName, items, setItems, count, setCount}) =>{
     )
 }    
 
-export {InputParagraph, InputHeading, InputMedia, InputCode}
+export {InputParagraph, InputHeading, InputMedia, InputCode, InputFile}
   

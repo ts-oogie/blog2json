@@ -25,7 +25,8 @@ const Item = ({id, text, type, size, count}) => {
             <h3>{id == 0 ? "[" : ""}{'{"id" : ' +  '' + id + ','}</h3>
             <h3 >{'"type" : ' + '"' + type + '",'}</h3>
             <h3 >{'"text" : ' + '"' + text + '",'}</h3>
-            <h3 >{'"size" : ' + '"' + size + '"}'}{(id == 0 && count == 0) || (id > 0 && (id == count)) ? "]" : ","} </h3>
+            <h3 >{'"size" : ' + '"' + size + '"}'}
+            {(id == 0 && count == 0) || (id > 0 && (id == count)) ? "]" : ","} </h3>
         </div>
     )
 }

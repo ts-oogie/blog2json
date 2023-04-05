@@ -1,6 +1,6 @@
 import React from 'react'
 import { useEffect } from 'react'
-import {InputHeading, InputParagraph, InputMedia, InputCode}  from './inputForm'
+import {InputHeading, InputParagraph, InputMedia, InputCode, InputFile}  from './inputForm'
 
 const InputScrn = ({
         winWidth, 
@@ -46,6 +46,22 @@ const InputScrn = ({
         setName(defaultName.title)
         return(   
             <></>
+        )
+    }
+
+    else if(hoverState == "file"){
+        return(   
+            <header className="scrnInput" style={headerStyle} >
+                <InputFile
+                    defaultName={defaultName}
+                    winWidth={winWidth} 
+                    setName={setName}  
+                    items={items}
+                    setItems={setItems}
+                    count={count} 
+                    setCount={setCount} 
+                />
+            </header>
         )
     }
 
