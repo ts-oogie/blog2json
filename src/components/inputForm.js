@@ -2,24 +2,53 @@ import React from 'react'
 import { useState, useEffect } from 'react'
 import { Htype, Mtype} from './typeBar'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-
 import {faFile} from '@fortawesome/free-regular-svg-icons'
-//import { projectStorage, projectFirestore} from '../firebase/config.js'
+import { collection, getDocs, db} from '../firebase/config.js'
+ 
 import ProgressBar from './ProgressBar' 
 
 const InputFile = ({winWidth, setName, items, setItems, count, setCount}) =>{ 
 
     let thisObj = {}
-    let newItem = items
-    let newCount 
+    let newItem = []
+    let newCount = count
+
+    async function collectionQuery(){
+       let data = await getDocs(collection(db, "blog"))
+
+        data.forEach((doc) => { 
+
+            thisObj = {} 
+
+            let thisType =  doc.data().type
+            let thisText = doc.data().text
+            let thisSize = doc.data().size
+            let thisId = doc.data().id 
+                
+            thisObj.id = thisId
+            thisObj.type = thisType
+            thisObj.text = thisText
+            thisObj.size = thisSize
+
+            newItem.push(thisObj) 
+
+            setCount(newCount)
+
+            newCount++
+
+        })
+
+        setItems(newItem)
+
+    } 
 
     const cssPInput = {
         fontFamily: 'Share Tech Mono',
         fontSize: '1.25rem'
     }
-
-    const [code, setCode] = useState("")   
+ 
     const [btnState, setBtnState] = useState("none")
+    const [select, setSelect] = useState("")
 
     useEffect(() => {
         setName("Load Collection")
@@ -58,42 +87,27 @@ const InputFile = ({winWidth, setName, items, setItems, count, setCount}) =>{
         else{
             btnStyle.cursor = 'none'
         }
-    }
+    } 
 
     return( 
         <div className="inputHeading">  
-            <FontAwesomeIcon icon={faFile} style={fileStyle}/>
+            <FontAwesomeIcon icon={faFile} style={fileStyle} id="blog"  />
             <h3>Blog</h3>
             <label>  
                 <div className="submitBtn" 
                     style={btnStyle}
                     onClick={ (e)=>{
                         e.preventDefault()  
-
-                        if(code == ""){
-                            alert("Please enter code snippet")
-                        }
-                        
-                        else{
-                            newCount = count + 1 
-                            setCount(newCount) 
-                            thisObj.id = newCount
-                            thisObj.type = "code"
-                            thisObj.text = code
-                            thisObj.size = "" 
-                            newItem.push(thisObj) 
-                            setItems(newItem)
-                        }
+                        collectionQuery()
                     }}
                     onMouseEnter={ ()=>{
                         setBtnState("pointer")
-                    }}
-
+                    }} 
                     onMouseLeave={ ()=>{
                         setBtnState("none")
                     }}
                 >
-                <h4>Add</h4>
+                <h4>Load</h4>
                 </div>
             </label> 
         </div>

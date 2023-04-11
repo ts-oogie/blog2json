@@ -10,8 +10,7 @@ import './App.css';
 
 function App() { 
 
-  const [count, setCount] = useState(0) 
-  const [edit, editCode] = useState("")
+  const [count, setCount] = useState(0)  
   const [items, setItems] = useState([  //the JS Obj
     {
         id: 0, 

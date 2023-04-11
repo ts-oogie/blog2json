@@ -1,7 +1,6 @@
 import React from 'react'
 import {useEffect, useState} from 'react'
 import useStorage from '../hooks/useStorage' 
-
  
 const ProgressBar = ({file, count, setCount, size, items, setItems}) => {
 
