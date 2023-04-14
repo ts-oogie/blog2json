@@ -1,23 +1,42 @@
 import React from 'react'
 import { useState, useEffect } from 'react'
 import { Htype, Mtype} from './typeBar'
+import BlogDocs from './blogDocs'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import {faFile} from '@fortawesome/free-regular-svg-icons'
-import { collection, getDocs, db} from '../firebase/config.js'
+import { faFile } from '@fortawesome/free-regular-svg-icons'
+import { collection, collectionGroup, getDocs, db} from '../firebase/config.js'
  
 import ProgressBar from './ProgressBar' 
 
-const InputFile = ({winWidth, setName, items, setItems, count, setCount}) =>{ 
+const InputFile = ({winWidth, setName, items, setItems, count, setCount}) => { 
 
     let thisObj = {}
-    let newItem = []
+    let dbQuery = []
+    let [articles, setArticles] = useState([]) //array of article names i.e. firstPost, secondPost
     let newCount = count
 
+    const [btnState, setBtnState] = useState("none")
+    const [select, setSelect] = useState("") 
+
+
     async function collectionQuery(){
-       let data = await getDocs(collection(db, "blog"))
 
+       let data = await getDocs(collection(db, "blog" ))
+       //let data = await getDocs(collection(db, "blog/firstPost/children" ))
+
+       newCount = 1
+       setCount(newCount)
+       
         data.forEach((doc) => { 
+            
+            let thisArr = articles
+            thisArr.push(doc.data().name)   
 
+            setArticles(thisArr) 
+
+            let Id = doc.id 
+ 
+            /*
             thisObj = {} 
 
             let thisType =  doc.data().type
@@ -30,51 +49,21 @@ const InputFile = ({winWidth, setName, items, setItems, count, setCount}) =>{
             thisObj.text = thisText
             thisObj.size = thisSize
 
-            newItem.push(thisObj) 
+            dbQuery.push(thisObj) 
 
             setCount(newCount)
 
-            newCount++
+            newCount++*/
 
         })
 
-        setItems(newItem)
+        //setItems(dbQuery) 
 
-    } 
-
-    const cssPInput = {
-        fontFamily: 'Share Tech Mono',
-        fontSize: '1.25rem'
-    }
- 
-    const [btnState, setBtnState] = useState("none")
-    const [select, setSelect] = useState("")
-
+    }  
+    
     useEffect(() => {
-        setName("Load Collection")
-    })
-
-    const headingStyle = { 
-        width : (()=>{
-            if(winWidth <= 760 && winWidth >= 600){ 
-                return "300px"
-            }
-            else if(winWidth < 600){
-                return "150px"
-            }
-        })(),
-        height: "20px", 
-        clear: "right",
-        fontSize: "20px",
-        fontFamily: "Share Tech Mono",
-        fontWeight: "bold"
-    }
-
-    const fileStyle = {
-        width: "55px",
-        height: "55px",
-        color: "white"
-    }
+        setName("Load Collection") 
+    }) 
 
     let btnStyle = {
         cursor: btnState
@@ -90,7 +79,7 @@ const InputFile = ({winWidth, setName, items, setItems, count, setCount}) =>{
     } 
 
     return( 
-        <div className="inputHeading">  
+        <div className="inputHeading" style={minHeight}>  
             <FontAwesomeIcon icon={faFile} style={fileStyle} id="blog"  />
             <h3>Blog</h3>
             <label>  
@@ -110,8 +99,43 @@ const InputFile = ({winWidth, setName, items, setItems, count, setCount}) =>{
                 <h4>Load</h4>
                 </div>
             </label> 
+            <BlogDocs docs={articles} />
         </div>
     )
+
+    //css Styling
+    const cssPInput = {
+        fontFamily: 'Share Tech Mono',
+        fontSize: '1.25rem'
+    }
+
+    const headingStyle = { 
+        width : (()=>{
+            if(winWidth <= 760 && winWidth >= 600){ 
+                return "300px"
+            }
+            else if(winWidth < 600){
+                return "150px"
+            }
+        })(),
+        height: "20px", 
+        clear: "right",
+        fontSize: "20px",
+        fontFamily: "Share Tech Mono",
+        fontWeight: "bold"
+    }
+
+    const minHeight = {
+        minHeight: "300px"
+    }
+
+    const fileStyle = {
+        width: "55px",
+        height: "55px",
+        color: "white"
+    }
+
+
 }   
 
 

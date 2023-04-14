@@ -22,7 +22,7 @@ const Item = ({id, text, type, size, count}) => {
         <div style={cssItems} key={id}>
             <FontAwesomeIcon className="faSize" icon={faEdit} />
             <FontAwesomeIcon className="faSize" icon={faTrashCan} /> 
-            <h3>{id == 0 ? "[" : ""}{'{"id" : ' +  '' + id + ','}</h3>
+            <h3>{id == 1 ? "[" : ""}{'{"id" : ' +  '' + id + ','}</h3>
             <h3 >{'"type" : ' + '"' + type + '",'}</h3>
             <h3 >{'"text" : ' + '"' + text + '",'}</h3>
             <h3 >{'"size" : ' + '"' + size + '"}'}

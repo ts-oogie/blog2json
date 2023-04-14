@@ -10,7 +10,7 @@ import './App.css';
 
 function App() { 
 
-  const [count, setCount] = useState(0)  
+  const [count, setCount] = useState(1)  //count must start at 1
   const [items, setItems] = useState([  //the JS Obj
     {
         id: 0, 

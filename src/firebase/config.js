@@ -1,7 +1,7 @@
 
 import { initializeApp } from "firebase/app"
 import {getStorage, ref, uploadBytesResumable, getDownloadURL} from 'firebase/storage'
-import {getFirestore, collection, getDocs, addDoc} from 'firebase/firestore/lite'
+import {getFirestore, collection, collectionGroup, getDocs, addDoc} from 'firebase/firestore/lite'
 
 const firebaseConfig = {
     apiKey: "AIzaSyDDGYc0Tk7HEJ1-ttB8r0da5lDhy0IIIWQ",
@@ -18,5 +18,5 @@ const app = initializeApp(firebaseConfig)
 const projectStorage = getStorage(app)  //fileStorage
 const db = getFirestore(app) //db 
 
-export { db, projectStorage, ref, uploadBytesResumable, getDownloadURL, collection, addDoc, getDocs } 
+export { db, projectStorage, ref, uploadBytesResumable, getDownloadURL, collection, collectionGroup, addDoc, getDocs } 
 
