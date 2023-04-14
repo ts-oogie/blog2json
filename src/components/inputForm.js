@@ -60,7 +60,7 @@ const InputFile = ({winWidth, setName, items, setItems, count, setCount}) => {
         //setItems(dbQuery) 
 
     }  
-    
+
     useEffect(() => {
         setName("Load Collection") 
     }) 
@@ -77,31 +77,6 @@ const InputFile = ({winWidth, setName, items, setItems, count, setCount}) => {
             btnStyle.cursor = 'none'
         }
     } 
-
-    return( 
-        <div className="inputHeading" style={minHeight}>  
-            <FontAwesomeIcon icon={faFile} style={fileStyle} id="blog"  />
-            <h3>Blog</h3>
-            <label>  
-                <div className="submitBtn" 
-                    style={btnStyle}
-                    onClick={ (e)=>{
-                        e.preventDefault()  
-                        collectionQuery()
-                    }}
-                    onMouseEnter={ ()=>{
-                        setBtnState("pointer")
-                    }} 
-                    onMouseLeave={ ()=>{
-                        setBtnState("none")
-                    }}
-                >
-                <h4>Load</h4>
-                </div>
-            </label> 
-            <BlogDocs docs={articles} />
-        </div>
-    )
 
     //css Styling
     const cssPInput = {
@@ -133,9 +108,34 @@ const InputFile = ({winWidth, setName, items, setItems, count, setCount}) => {
         width: "55px",
         height: "55px",
         color: "white"
-    }
+    } 
 
+    return( 
+        <div className="inputHeading" style={minHeight}>  
+            <FontAwesomeIcon icon={faFile} style={fileStyle} id="blog"  />
+            <h3>Blog</h3>
+            <label>  
+                <div className="submitBtn" 
+                    style={btnStyle}
+                    onClick={ (e)=>{
+                        e.preventDefault()  
+                        collectionQuery()
+                    }}
+                    onMouseEnter={ ()=>{
+                        setBtnState("pointer")
+                    }} 
+                    onMouseLeave={ ()=>{
+                        setBtnState("none")
+                    }}
+                >
+                <h4>Load</h4>
+                </div>
+            </label> 
+            <BlogDocs docs={articles} />
+        </div>
+    )
 
+    
 }   
 
 

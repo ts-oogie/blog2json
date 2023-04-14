@@ -7,8 +7,7 @@ const BlogDocs = ({docs}) => {
     
     const divStyle = {
         display: 'block',
-        width: "100%",
-        border: "1px red solid"
+        width: "500px"
     }
 
     const fileStyle = {
