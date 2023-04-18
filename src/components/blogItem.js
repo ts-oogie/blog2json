@@ -1,10 +1,10 @@
 import React from 'react'
-import {useState} from 'react'
+import {useState, useEffect } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faFile } from '@fortawesome/free-regular-svg-icons' 
 import {collection, getDocs, db} from '../firebase/config.js'
 
-const BlogItem = ({name, number, setItems, count, setCount}) => {
+const BlogItem = ({name, number, setItems, count, setCount, elCount, setElCount}) => {
 
     const [btnState, setBtnState] = useState("none")
     let thisObj = {}
@@ -20,17 +20,21 @@ const BlogItem = ({name, number, setItems, count, setCount}) => {
 
     const divStyle = {
         display : "inline-block",
-        marginBottom: "20px"
+        marginBottom: "50px"
     }
 
     const hStyle = {
         marginLeft: "20px"
     } 
 
-    async function articleQuery() {
-        let doc = await getDocs(collection(db, 'blog/' + name + '/children'))
+    useEffect(()=>{
+        console.log("blogItem elCount : ", elCount)
+    })
 
-        newCount = 1
+    async function articleQuery() {
+
+        let doc = await getDocs(collection(db, 'blog/' + name + '/children')) 
+        
 
         doc.forEach((data)=>{ 
             
@@ -46,9 +50,9 @@ const BlogItem = ({name, number, setItems, count, setCount}) => {
             thisObj.text = thisText
             thisObj.size = thisSize
 
-            dbQuery.push(thisObj)  
+            dbQuery.push(thisObj)   
 
-            newCount++ 
+            setElCount(thisId)
             
         })
 

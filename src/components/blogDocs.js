@@ -2,7 +2,7 @@ import React from 'react'
 import BlogItem from './blogItem'
 import { useState, useEffect } from 'react'
 
-const BlogDocs = ({docs, setItems, count, setCount}) => {  
+const BlogDocs = ({docs, setItems, count, setCount, elCount, setElCount}) => {  
     
     const divStyle = {
         display: 'block',
@@ -22,7 +22,16 @@ const BlogDocs = ({docs, setItems, count, setCount}) => {
     return(
         <div style={divStyle} >
             {docs.map((article, index)=>(
-                <BlogItem name={article} number={index} key={index} setItems={setItems} count={count} setCount={setCount}/>
+                <BlogItem 
+                    name={article} 
+                    number={index} 
+                    key={index} 
+                    setItems={setItems} 
+                    count={count} 
+                    setCount={setCount}
+                    elCount={elCount}
+                    setElCount={setElCount}
+                />
             ))}
         </div>
     )

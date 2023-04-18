@@ -8,38 +8,38 @@ import { collection, getDocs, db} from '../firebase/config.js'
  
 import ProgressBar from './ProgressBar' 
 
-const InputFile = ({winWidth, setName, items, setItems, count, setCount}) => { 
-
+const InputFile = ({winWidth, setName, items, setItems, count, setCount, elCount, setElCount}) => { 
     
     let [articles, setArticles] = useState([]) //array of article names i.e. firstPost, secondPost 
 
     const [btnState, setBtnState] = useState("none")
-    const [select, setSelect] = useState("") 
+    const [select, setSelect] = useState("")  
 
+    async function collectionQuery(){ 
+        
+        console.log("set Count : ", count)
 
-    async function collectionQuery(){
-
-       let data = await getDocs(collection(db, "blog" ))
-       //let data = await getDocs(collection(db, "blog/firstPost/children" ))  
+        let data = await getDocs(collection(db, "blog" ))
+        //let data = await getDocs(collection(db, "blog/firstPost/children" ))   
 
         data.forEach((doc) => { 
             
             let thisArr = articles
             thisArr.push(doc.data().name)   
 
-            setArticles(thisArr)
+            setArticles(thisArr)   
             
+            setCount(count++)
+
             console.log("count = ", count)
 
-        }) 
-
-        
-
+        })  
 
     }  
 
     useEffect(() => {
         setName("Load Collection") 
+        setCount(0)
     }) 
 
     let btnStyle = {
@@ -95,8 +95,8 @@ const InputFile = ({winWidth, setName, items, setItems, count, setCount}) => {
                 <div className="submitBtn" 
                     style={btnStyle}
                     onClick={ (e)=>{
-                        e.preventDefault()  
-                        collectionQuery()
+                        e.preventDefault()   
+                        collectionQuery() 
                     }}
                     onMouseEnter={ ()=>{
                         setBtnState("pointer")
@@ -108,7 +108,7 @@ const InputFile = ({winWidth, setName, items, setItems, count, setCount}) => {
                 <h4>Load</h4>
                 </div>
             </label> 
-            <BlogDocs docs={articles} setItems={setItems} count={count} setCount={setCount}/>
+            <BlogDocs docs={articles} setItems={setItems} count={count} setCount={setCount} elCount={elCount} setElCount={setElCount}/>
         </div>
     )
 
@@ -116,7 +116,7 @@ const InputFile = ({winWidth, setName, items, setItems, count, setCount}) => {
 }   
 
 
-const InputCode = ({winWidth, setName, items, setItems, count, setCount}) =>{ 
+const InputCode = ({winWidth, setName, items, setItems, count, setCount, elCount, setElCount}) =>{ 
 
     let thisObj = {}
     let newItem = items
@@ -146,6 +146,7 @@ const InputCode = ({winWidth, setName, items, setItems, count, setCount}) =>{
 
     useEffect(() => {
         setName("Enter Code Insert")
+        console.log("InputCode ElCount : ", elCount)
     })
 
     const headingStyle = { 
@@ -187,7 +188,9 @@ const InputCode = ({winWidth, setName, items, setItems, count, setCount}) =>{
                     type="text"  
                     style={cssPInput}
                     value={code} 
-                    onChange={(e) => setCode(e.target.value)}
+                    onChange={(e) => {
+                        setCode(e.target.value)  
+                    }}
                 >
                 </textarea>
                 <div className="submitBtn" 
@@ -199,15 +202,15 @@ const InputCode = ({winWidth, setName, items, setItems, count, setCount}) =>{
                             alert("Please enter code snippet")
                         }
                         
-                        else{
-                            newCount = count + 1 
-                            setCount(newCount) 
-                            thisObj.id = newCount
+                        else{  
+                            
+                            thisObj.id = elCount++
                             thisObj.type = "code"
                             thisObj.text = code
                             thisObj.size = "" 
                             newItem.push(thisObj) 
-                            setItems(newItem)
+                            setItems(newItem)  
+                            
                         }
                     }}
                     onMouseEnter={ ()=>{
@@ -226,7 +229,7 @@ const InputCode = ({winWidth, setName, items, setItems, count, setCount}) =>{
 }   
  
 //InputHeading
-const InputHeading = ({winWidth, setName, items, setItems, count, setCount}) =>{ 
+const InputHeading = ({winWidth, setName, items, setItems, count, setCount, elCount, setElCount}) =>{ 
 
     let thisObj = {}
     let newItem = items
@@ -238,6 +241,7 @@ const InputHeading = ({winWidth, setName, items, setItems, count, setCount}) =>{
 
     useEffect(() => {
         setName("Enter a Heading")
+        console.log("inputHeading elCount : ", elCount)
     })
 
     const headingStyle = { 
@@ -290,15 +294,17 @@ const InputHeading = ({winWidth, setName, items, setItems, count, setCount}) =>{
                         }
                         
                         else{
-                            newCount = count + 1 
-                            setCount(newCount)
-
-                            thisObj.id = newCount
+                            let thisNum = elCount
+                            thisNum++ 
+                            alert(thisNum)
+                            thisObj.id = thisNum
                             thisObj.type = "heading"
                             thisObj.text = heading
                             thisObj.size = headerType 
                             newItem.push(thisObj) 
-                            setItems(newItem)
+                            setItems(newItem) 
+                            
+                            setElCount(thisNum)
                         }
                     }}
                     onMouseEnter={ ()=>{

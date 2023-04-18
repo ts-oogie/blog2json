@@ -10,7 +10,9 @@ const InputScrn = ({
         items,
         setItems, 
         count, 
-        setCount
+        setCount, 
+        elCount,
+        setElCount
     }) => {   
 
     const headerStyle = {
@@ -60,6 +62,8 @@ const InputScrn = ({
                     setItems={setItems}
                     count={count} 
                     setCount={setCount} 
+                    elCount={elCount}
+                    setElCount={setElCount}
                 />
             </header>
         )
@@ -76,6 +80,8 @@ const InputScrn = ({
                     setItems={setItems}
                     count={count} 
                     setCount={setCount} 
+                    elCount={elCount}
+                    setElCount={setElCount}
                 />
             </header>
         )
@@ -92,6 +98,8 @@ const InputScrn = ({
                     setItems={setItems}
                     count={count} 
                     setCount={setCount} 
+                    elCount={elCount}
+                    setElCount={setElCount}
                 />
             </header>
         )
@@ -108,6 +116,8 @@ const InputScrn = ({
                     setItems={setItems}
                     count={count} 
                     setCount={setCount} 
+                    elCount={elCount}
+                    setElCount={setElCount}
                 />
             </header>
         )
@@ -123,7 +133,10 @@ const InputScrn = ({
                     count={count} 
                     items={items}
                     setItems={setItems}
-                    setCount={setCount} />
+                    setCount={setCount}
+                    elCount={elCount}
+                    setElCount={setElCount}
+                /> 
             </header>
         )
     }
