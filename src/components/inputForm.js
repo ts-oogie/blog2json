@@ -4,16 +4,14 @@ import { Htype, Mtype} from './typeBar'
 import BlogDocs from './blogDocs'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faFile } from '@fortawesome/free-regular-svg-icons'
-import { collection, collectionGroup, getDocs, db} from '../firebase/config.js'
+import { collection, getDocs, db} from '../firebase/config.js'
  
 import ProgressBar from './ProgressBar' 
 
 const InputFile = ({winWidth, setName, items, setItems, count, setCount}) => { 
 
-    let thisObj = {}
-    let dbQuery = []
-    let [articles, setArticles] = useState([]) //array of article names i.e. firstPost, secondPost
-    let newCount = count
+    
+    let [articles, setArticles] = useState([]) //array of article names i.e. firstPost, secondPost 
 
     const [btnState, setBtnState] = useState("none")
     const [select, setSelect] = useState("") 
@@ -22,42 +20,21 @@ const InputFile = ({winWidth, setName, items, setItems, count, setCount}) => {
     async function collectionQuery(){
 
        let data = await getDocs(collection(db, "blog" ))
-       //let data = await getDocs(collection(db, "blog/firstPost/children" ))
+       //let data = await getDocs(collection(db, "blog/firstPost/children" ))  
 
-       newCount = 1
-       setCount(newCount)
-       
         data.forEach((doc) => { 
             
             let thisArr = articles
             thisArr.push(doc.data().name)   
 
-            setArticles(thisArr) 
+            setArticles(thisArr)
+            
+            console.log("count = ", count)
 
-            let Id = doc.id 
- 
-            /*
-            thisObj = {} 
+        }) 
 
-            let thisType =  doc.data().type
-            let thisText = doc.data().text
-            let thisSize = doc.data().size
-            let thisId = doc.data().id 
-                
-            thisObj.id = thisId
-            thisObj.type = thisType
-            thisObj.text = thisText
-            thisObj.size = thisSize
+        
 
-            dbQuery.push(thisObj) 
-
-            setCount(newCount)
-
-            newCount++*/
-
-        })
-
-        //setItems(dbQuery) 
 
     }  
 
@@ -131,7 +108,7 @@ const InputFile = ({winWidth, setName, items, setItems, count, setCount}) => {
                 <h4>Load</h4>
                 </div>
             </label> 
-            <BlogDocs docs={articles} />
+            <BlogDocs docs={articles} setItems={setItems} count={count} setCount={setCount}/>
         </div>
     )
 
