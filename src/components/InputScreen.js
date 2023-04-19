@@ -12,7 +12,9 @@ const InputScrn = ({
         count, 
         setCount, 
         elCount,
-        setElCount
+        setElCount,
+        currArticle,
+        setCurrArticle
     }) => {   
 
     const headerStyle = {
@@ -64,6 +66,8 @@ const InputScrn = ({
                     setCount={setCount} 
                     elCount={elCount}
                     setElCount={setElCount}
+                    currArticle={currArticle}
+                    setCurrArticle={setCurrArticle}
                 />
             </header>
         )

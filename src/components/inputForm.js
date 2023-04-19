@@ -8,19 +8,16 @@ import { collection, getDocs, db} from '../firebase/config.js'
  
 import ProgressBar from './ProgressBar' 
 
-const InputFile = ({winWidth, setName, items, setItems, count, setCount, elCount, setElCount}) => { 
+const InputFile = ({winWidth, setName, items, setItems, count, setCount, elCount, setElCount, currArticle, setCurrArticle}) => { 
     
     let [articles, setArticles] = useState([]) //array of article names i.e. firstPost, secondPost 
 
     const [btnState, setBtnState] = useState("none")
     const [select, setSelect] = useState("")  
 
-    async function collectionQuery(){ 
-        
-        console.log("set Count : ", count)
+    async function collectionQuery(){  
 
-        let data = await getDocs(collection(db, "blog" ))
-        //let data = await getDocs(collection(db, "blog/firstPost/children" ))   
+        let data = await getDocs(collection(db, "blog" )) //get blog aricles from firebase 
 
         data.forEach((doc) => { 
             
@@ -108,7 +105,16 @@ const InputFile = ({winWidth, setName, items, setItems, count, setCount, elCount
                 <h4>Load</h4>
                 </div>
             </label> 
-            <BlogDocs docs={articles} setItems={setItems} count={count} setCount={setCount} elCount={elCount} setElCount={setElCount}/>
+            <BlogDocs 
+                docs={articles} 
+                setItems={setItems} 
+                count={count} 
+                setCount={setCount} 
+                elCount={elCount} 
+                setElCount={setElCount} 
+                currArticle={currArticle}
+                setCurrArticle={setCurrArticle}
+            />
         </div>
     )
 

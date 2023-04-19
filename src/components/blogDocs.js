@@ -2,7 +2,7 @@ import React from 'react'
 import BlogItem from './blogItem'
 import { useState, useEffect } from 'react'
 
-const BlogDocs = ({docs, setItems, count, setCount, elCount, setElCount}) => {  
+const BlogDocs = ({docs, setItems, count, setCount, elCount, setElCount, currArticle, setCurrArticle}) => {  
     
     const divStyle = {
         display: 'block',
@@ -31,6 +31,8 @@ const BlogDocs = ({docs, setItems, count, setCount, elCount, setElCount}) => {
                     setCount={setCount}
                     elCount={elCount}
                     setElCount={setElCount}
+                    currArticle={currArticle}
+                    setCurrArticle={setCurrArticle}
                 />
             ))}
         </div>

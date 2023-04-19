@@ -14,6 +14,7 @@ function App() {
 
   const [count, setCount] = useState(0) //number of blog articles returned
   const [elCount, setElCount] = useState(0) //number of children in each blog post
+  const [currId, setCurrId] = useState("") //selected element id number
   const [currArticle, setCurrArticle] = useState("") //current blog article
   const [hoverState, setHoverState] = useState("") //for icons
   const [name, setName] = useState(Header.defaultProps.title) //name of header
@@ -46,7 +47,10 @@ function App() {
           setCount={setCount}
           elCount={elCount}
           setElCount={setElCount}
-          defaultName={Header.defaultProps} />
+          defaultName={Header.defaultProps} 
+          currArticle={currArticle}
+          setCurrArticle={setCurrArticle}
+          />
       <PrintItems items={items} count={count}/> 
     </div> 
   )

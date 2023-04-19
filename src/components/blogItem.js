@@ -4,9 +4,10 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faFile } from '@fortawesome/free-regular-svg-icons' 
 import {collection, getDocs, db} from '../firebase/config.js'
 
-const BlogItem = ({name, number, setItems, count, setCount, elCount, setElCount}) => {
+const BlogItem = ({name, number, setItems, count, setCount, elCount, setElCount, currArticle, setCurrArticle}) => {
 
     const [btnState, setBtnState] = useState("none")
+    const [colorState, setColorState] = useState("white")
     let thisObj = {}
     let dbQuery = []
     let newCount = count
@@ -14,7 +15,7 @@ const BlogItem = ({name, number, setItems, count, setCount, elCount, setElCount}
     const fileStyle = {
         width: "55px",
         height: "55px",
-        color: "white",
+        color: colorState,
         cursor: btnState
     }  
 
@@ -28,13 +29,18 @@ const BlogItem = ({name, number, setItems, count, setCount, elCount, setElCount}
     } 
 
     useEffect(()=>{
-        console.log("blogItem elCount : ", elCount)
-    })
+        //console.log("blogItem elCount : ", elCount) 
+        if(name == currArticle){
+            setColorState("black")
+        }
+        else{
+            setColorState("white")
+        }
+    }, [currArticle])
 
     async function articleQuery() {
 
-        let doc = await getDocs(collection(db, 'blog/' + name + '/children')) 
-        
+        let doc = await getDocs(collection(db, 'blog/' + name + '/children'))  
 
         doc.forEach((data)=>{ 
             
@@ -67,12 +73,14 @@ const BlogItem = ({name, number, setItems, count, setCount, elCount, setElCount}
                 id="blog" 
                 onClick={()=>{
                     articleQuery()
+                    setCurrArticle(name) 
                 }} 
                 onMouseEnter={()=>{
                     setBtnState("pointer")
                 }} 
                 onMouseLeave={ ()=>{
                     setBtnState("none")
+                    
                 }}
             />
             <h3 style={hStyle}>{name}</h3>
