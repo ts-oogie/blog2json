@@ -10,27 +10,26 @@ import './App.css';
 
 function App() { 
 
+  let winWidth = window.innerWidth  
+
   const [count, setCount] = useState(0) //number of blog articles returned
   const [elCount, setElCount] = useState(0) //number of children in each blog post
+  const [currArticle, setCurrArticle] = useState("") //current blog article
+  const [hoverState, setHoverState] = useState("") //for icons
+  const [name, setName] = useState(Header.defaultProps.title) //name of header
+
   const [items, setItems] = useState([  //the JS Obj
     {
         id: 0, 
-        type: "_blank",
-        text: "_blank",
-        size: "_blank"
+        type: "blank",
+        text: "blank",
+        size: "blank"
     } 
   ])
 
   useEffect(()=>{
-    console.log("App elCount : ", elCount)
-    console.log("App count : ", count)
-  })
-  
-  //const [inputState, setInputState] = useState("") 
-  const [hoverState, setHoverState] = useState("") //for icons
-  const [name, setName] = useState(Header.defaultProps.title) //name of header
-
-  let winWidth = window.innerWidth  
+    console.log("App elCount : ", elCount) 
+  })  
 
   return (
     <div className="App" style={appStyle}>
